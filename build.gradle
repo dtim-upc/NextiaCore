@@ -1,0 +1,106 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = 'edu.upc.essi.dtim'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.apache.jena', name: 'apache-jena-libs', version: '4.1.0', ext: 'pom'
+    implementation group: 'org.apache.jena', name: 'jena-querybuilder', version: '4.1.0'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+signing {
+    required {
+        // signing is required if this is a release version and the artifacts are to be published
+        !version.toString().endsWith('-SNAPSHOT') && tasks.withType(PublishToMavenRepository).find {
+            gradle.taskGraph.hasTask it
+        }
+    }
+    sign publishing.publications
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name = 'NextiaCore'
+                description = ''
+//                url = 'https://www.essi.upc.edu/dtim/nextiadi/'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'jflores'
+                        name = 'Javier Flores'
+                        email = 'jflores@essi.upc.edu'
+                        url = 'https://www.essi.upc.edu/dtim/people/jflores'
+                    }
+                    developer {
+                        id = 'snadal'
+                        name = 'Sergi Nadal'
+                        email = 'snadal@essi.upc.edu'
+                        url = 'https://www.essi.upc.edu/dtim/people/snadal'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/dtim-upc/NextiaCore.git'
+                    developerConnection = 'scm:git:ssh://github.com/dtim-upc/NextiaCore.git'
+//                    url = 'https://github.com/dtim-upc/Nextia'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            credentials {
+                username nexusUsername
+                password nexusPassword
+            }
+
+            def releasesRepoUrl = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            def snapshotsRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+
+        }
+    }
+}
+
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
