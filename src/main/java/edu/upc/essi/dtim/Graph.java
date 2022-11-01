@@ -33,7 +33,7 @@ public class Graph extends ModelCom {
         super(base, personality);
     }
 
-    public Graph union( Graph model ) {
+    public Graph unionG( Graph model ) {
         return wrap( this.union(model));
     }
 //    public Graph union( Model model ) {

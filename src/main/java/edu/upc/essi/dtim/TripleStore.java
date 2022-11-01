@@ -132,9 +132,20 @@ public class TripleStore extends DatasetImpl {
 
         Txn.executeWrite(this, ()-> {
             Model graph = this.getNamedModel(graphIRI);
-            graph.remove(new ResourceImpl(subjectIRI), new PropertyImpl(predicateIRI), new LiteralImpl( NodeFactory.createLiteral(oldLiteral), null ));
-            graph.add(new ResourceImpl(subjectIRI), new PropertyImpl(predicateIRI), newLiteral);
+            if(graph.contains(new ResourceImpl(subjectIRI), new PropertyImpl(predicateIRI), new LiteralImpl( NodeFactory.createLiteral(oldLiteral) ,null))){
+                graph.remove(new ResourceImpl(subjectIRI), new PropertyImpl(predicateIRI), new LiteralImpl( NodeFactory.createLiteral(oldLiteral), null ));
+                graph.add(new ResourceImpl(subjectIRI), new PropertyImpl(predicateIRI), newLiteral);
+            }
+
         });
+
+    }
+
+//    This update it globally in all the dataset (i.e., all named graphs)
+    public void updateLiteral(String subjectIRI, String predicateIRI, String oldLiteral, String newLiteral){
+        // Look and update triples where oldIRI is object.
+        runAnUpdateQuery("DELETE {  <"+subjectIRI+">  <"+predicateIRI+"> '"+oldLiteral+"' } " +
+                "INSERT {  <"+subjectIRI+">  <"+predicateIRI+"> '"+newLiteral+"'} WHERE {  <"+subjectIRI+">  <"+predicateIRI+"> '"+oldLiteral+"' }");
 
     }
 
