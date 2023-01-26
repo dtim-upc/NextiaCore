@@ -10,6 +10,7 @@ import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.sys.JenaSystem;
 import org.apache.jena.update.UpdateAction;
+import org.apache.jena.vocabulary.RDFS;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -83,6 +84,31 @@ public class Graph extends ModelCom {
     public void delete(String subject, String predicate, String object){
         removeAll(new ResourceImpl(subject), new PropertyImpl(predicate), new ResourceImpl(object));
     }
+
+    public String getDomainOfProperty( String propertyIRI) {
+        String query = " SELECT ?domain WHERE { <"+propertyIRI+"> <"+ RDFS.domain.toString()+"> ?domain. }";
+
+        ResultSet res = runAQuery(query);
+
+        if(res.hasNext()){
+            QuerySolution r = res.next();
+            return r.get("domain").toString();
+        }
+        return null;
+    }
+
+    public String getRDFSLabel( String resourceIRI) {
+        String query = " SELECT ?label WHERE { <"+resourceIRI+"> <"+ RDFS.label.toString()+"> ?label. }  ";
+
+        ResultSet res = runAQuery(query);
+
+        if(res.hasNext()){
+            QuerySolution r = res.next();
+            return r.get("label").toString();
+        }
+        return null;
+    }
+
 
 //    TODO: rename to updateResourceIRI?
     /**

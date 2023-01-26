@@ -14,6 +14,7 @@ import org.apache.jena.system.Txn;
 import org.apache.jena.tdb.TDB;
 import org.apache.jena.tdb.TDBFactory;
 import org.apache.jena.update.UpdateAction;
+import org.apache.jena.vocabulary.RDFS;
 
 import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
@@ -87,7 +88,32 @@ public class TripleStore extends DatasetImpl {
             graph.add(new ResourceImpl(s), new PropertyImpl(p), o);
         });
     }
+    public String getDomainOfProperty(String graphIRI, String propertyIRI) {
+        String query = " SELECT ?domain WHERE { GRAPH <" + graphIRI + "> " +
+                " { <"+propertyIRI+"> <"+ RDFS.domain.toString()+"> ?domain. } } ";
 
+        ResultSet res = runAQuery(query);
+
+        if(res.hasNext()){
+            QuerySolution r = res.next();
+            return r.get("domain").toString();
+        }
+        return null;
+    }
+
+    public String getRDFSLabel(String graphIRI, String resourceIRI) {
+        String query = " SELECT ?label WHERE { GRAPH <" + graphIRI + "> " +
+                " { <"+resourceIRI+"> <"+ RDFS.label.toString()+"> ?label. } } ";
+
+        ResultSet res = runAQuery(query);
+
+        if(res.hasNext()){
+            QuerySolution r = res.next();
+            return r.get("label").toString();
+        }
+        return null;
+    }
+    
     public void deleteTriplesWithSubject(String graphIRI, String subjectIRI){
         runAnUpdateQuery("DELETE WHERE { GRAPH <" + graphIRI + ">" +
                 " {<"+subjectIRI+"> ?p ?o} }");
