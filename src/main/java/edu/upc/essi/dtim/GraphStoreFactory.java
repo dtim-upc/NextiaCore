@@ -4,7 +4,7 @@ public class GraphStoreFactory {
     private static GraphStoreInterface instance = null;
 
     private GraphStoreFactory() {
-        // Al ser private se evita que se instancie la factoría desde fuera de la clase
+        // Being private prevents the factory from being instantiated from outside the class
     }
 
     public static synchronized GraphStoreInterface getInstance() {

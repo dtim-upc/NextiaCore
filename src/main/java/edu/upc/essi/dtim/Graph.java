@@ -1,201 +1,218 @@
 package edu.upc.essi.dtim;
 
-import org.apache.jena.enhanced.Personality;
-import org.apache.jena.query.*;
-import org.apache.jena.rdf.model.*;
-import org.apache.jena.rdf.model.impl.ModelCom;
-import org.apache.jena.rdf.model.impl.PropertyImpl;
-import org.apache.jena.rdf.model.impl.ResourceImpl;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.sys.JenaSystem;
-import org.apache.jena.update.UpdateAction;
-import org.apache.jena.vocabulary.RDFS;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+/**
+ * A class that represents a graph data structure, where the nodes are represented by instances of the Node class and the
+ * edges are represented by instances of the Edge class.
+ */
+public class Graph {
 
-public class Graph extends ModelCom {
+    // A map that associates each node URI with its corresponding Node object.
+    private final Map<String, Node> nodes = new HashMap<>();
 
-    static { JenaSystem.init(); }
-
-    public static Graph createDefaultGraph()
-    { return new Graph( org.apache.jena.graph.Factory.createGraphMem( ) ); }
-
-    public static Graph wrap(Model g){
-        return new Graph(g.getGraph());
-    }
-
-    public Graph(org.apache.jena.graph.Graph base) {
-        super(base);
-    }
-
-    public Graph(org.apache.jena.graph.Graph base, Personality<RDFNode> personality) {
-        super(base, personality);
-    }
-
-    public Graph unionG( Graph model ) {
-        return wrap( this.union(model));
-    }
-//    public Graph union( Model model ) {
-//        return wrap( this.union(model));
-//    }
-
-    public void add(String subject, String predicate, String object) {
-        Resource r = createResource(subject);
-        r.addProperty(createProperty(predicate), createResource(object));
-    }
-    public void add(String subject, Property predicate, Resource object) {
-        Resource r = createResource(subject);
-        r.addProperty(predicate, object);
-    }
-
-    public void add(String subject, Property predicate, String object) {
-        Resource r = createResource(subject);
-        r.addProperty(predicate, createResource(object));
-    }
-
-
-    public void addLiteral(String subject, String predicate, String literal) {
-        Resource r = createResource(subject);
-        r.addProperty(createProperty(predicate), literal);
-    }
-
-    public void addLiteral(String subject, Property predicate, String literal) {
-        Resource r = createResource(subject);
-        r.addProperty(predicate, literal);
-    }
-
-    public void deleteResource(String uri) {
-        deleteSubject(uri);
-        deleteObject(uri);
-    }
-
-    public void deleteSubject(String uri) {
-        Resource r = createResource(uri);
-        removeAll(r, null, null);
-    }
-
-    public void deleteObject(String uri) {
-        Resource r = createResource(uri);
-        removeAll(null, null, r);
-    }
-
-    public void delete(String subject, String predicate, String object){
-        removeAll(new ResourceImpl(subject), new PropertyImpl(predicate), new ResourceImpl(object));
-    }
-
-    public String getDomainOfProperty( String propertyIRI) {
-        String query = " SELECT ?domain WHERE { <"+propertyIRI+"> <"+ RDFS.domain.toString()+"> ?domain. }";
-
-        ResultSet res = runAQuery(query);
-
-        if(res.hasNext()){
-            QuerySolution r = res.next();
-            return r.get("domain").toString();
-        }
-        return null;
-    }
-
-    public String getRDFSLabel( String resourceIRI) {
-        String query = " SELECT ?label WHERE { <"+resourceIRI+"> <"+ RDFS.label.toString()+"> ?label. }  ";
-
-        ResultSet res = runAQuery(query);
-
-        if(res.hasNext()){
-            QuerySolution r = res.next();
-            return r.get("label").toString();
-        }
-        return null;
-    }
-
-
-//    TODO: rename to updateResourceIRI?
     /**
-     * Delete triple with oldIri and insert new triple with newIri in jena graph
-     * @param oldIRI actual iri that appears in the triples.
-     * @param newIRI new iri that is going to replace the actual iri.
+     * Constructs a new instance of the Graph class.
      */
-    public void updateResourceNodeIRI(String oldIRI, String newIRI){
-        // Look and update triples where oldIRI is object.
-        runAnUpdateQuery("DELETE {?s ?p <"+oldIRI+">} " +
-                "INSERT {?s ?p <"+newIRI+">} WHERE {  ?s ?p <"+oldIRI+"> }");
-        // Look and update triples where oldIRI is subject.
-        runAnUpdateQuery("DELETE {<"+oldIRI+"> ?p ?o} " +
-                "INSERT {<"+newIRI+"> ?p ?o} WHERE {  <"+oldIRI+"> ?p ?o }");
+    public Graph() {
     }
 
-    public void updateProperty(String oldIRI, String newIRI){
-        // Look and update triples where oldIRI is object.
-        runAnUpdateQuery("DELETE {?s ?p <"+oldIRI+">} " +
-                "INSERT {?s ?p <"+newIRI+">} WHERE {  ?s ?p <"+oldIRI+"> }");
-        // Look and update triples where oldIRI is subject.
-        runAnUpdateQuery("DELETE {<"+oldIRI+"> ?p ?o} " +
-                "INSERT {<"+newIRI+"> ?p ?o} WHERE {  <"+oldIRI+"> ?p ?o }");
+    /**
+     * Adds a new triple to the graph, represented by the given subject, predicate, and object URIs.
+     *
+     * @param subject   the URI of the subject node.
+     * @param predicate the URI of the predicate node.
+     * @param object    the URI of the object node.
+     */
+    public void addTriple(String subject, String predicate, String object) {
+        // Retrieves or creates the nodes corresponding to the subject, predicate, and object URIs.
+        Node s = getOrCreateNode(subject);
+        Node p = getOrCreateNode(predicate);
+        Node o = getOrCreateNode(object);
+
+        // Adds an outgoing edge from the subject node to the object node, labeled with the predicate node.
+        s.addOutgoingEdge(p, o);
+
+        // Adds an incoming edge to the object node from the subject node, labeled with the predicate node.
+        o.addIncomingEdge(p, s);
     }
 
-    public  void runAnUpdateQuery(String sparqlQuery) {
 
-        try {
-            UpdateAction.parseExecute(sparqlQuery, this);
-        } catch (Exception e) {
-            e.printStackTrace();
+    /**
+     * Returns a set of nodes in the graph that have the specified URI.
+     *
+     * @param uri the URI to search for.
+     * @return a set of nodes in the graph that have the specified URI.
+     */
+    public Set<Node> getNodesByUri(String uri) {
+        Set<Node> result = new HashSet<>();
+
+        for (Node node : nodes.values()) {
+            if (node.getUri().equals(uri)) {
+                result.add(node);
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Returns a set of all the edges in the graph.
+     *
+     * @return a set of all the edges in the graph.
+     */
+    public Set<Edge> getEdges() {
+        Set<Edge> result = new HashSet<>();
+
+        for (Node node : nodes.values()) {
+            for (Map.Entry<Node, Set<Node>> entry : node.getOutgoingEdges().entrySet()) {
+                Node predicate = entry.getKey();
+                for (Node object : entry.getValue()) {
+                    result.add(new Edge(node, predicate, object));
+                }
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Retrieves the node corresponding to the given URI from the graph, or creates a new node with the given URI if it
+     * does not already exist.
+     *
+     * @param uri the URI of the node to retrieve or create.
+     * @return the node corresponding to the given URI.
+     */
+    private Node getOrCreateNode(String uri) {
+        Node node = nodes.get(uri);
+
+        if (node == null) {
+            node = new Node(uri);
+            nodes.put(uri, node);
+        }
+
+        return node;
+    }
+
+    /**
+     * A class that represents a node in a graph data structure. Each node is identified by a unique URI and can have outgoing and incoming edges
+     * to other nodes in the graph.
+     */
+    public static class Node {
+        private final String uri;
+        private final Map<Node, Set<Node>> outgoingEdges = new HashMap<>();
+        private final Map<Node, Set<Node>> incomingEdges = new HashMap<>();
+
+        /**
+         * Constructs a new instance of the Node class with the given URI.
+         *
+         * @param uri the URI that uniquely identifies the node.
+         */
+        public Node(String uri) {
+            this.uri = uri;
+        }
+
+        /**
+         * Returns the URI of the node.
+         *
+         * @return the URI of the node.
+         */
+        public String getUri() {
+            return uri;
+        }
+
+        /**
+         * Returns a map of outgoing edges from the node, where each key is a predicate node and each value is a set of object nodes.
+         *
+         * @return a map of outgoing edges from the node.
+         */
+        public Map<Node, Set<Node>> getOutgoingEdges() {
+            return outgoingEdges;
+        }
+
+        /**
+         * Returns a map of incoming edges to the node, where each key is a predicate node and each value is a set of subject nodes.
+         *
+         * @return a map of incoming edges to the node.
+         */
+        public Map<Node, Set<Node>> getIncomingEdges() {
+            return incomingEdges;
+        }
+
+        /**
+         * Adds a new outgoing edge from the node to the given object node, labeled with the given predicate node.
+         *
+         * @param predicate the predicate node that labels the edge.
+         * @param object    the object node that the edge points to.
+         */
+        public void addOutgoingEdge(Node predicate, Node object) {
+            outgoingEdges.computeIfAbsent(predicate, k -> new HashSet<>()).add(object);
+        }
+
+        /**
+         * Adds a new incoming edge to the node from the given subject node, labeled with the given predicate node.
+         *
+         * @param predicate the predicate node that labels the edge.
+         * @param subject   the subject node that the edge points from.
+         */
+        public void addIncomingEdge(Node predicate, Node subject) {
+            incomingEdges.computeIfAbsent(predicate, k -> new HashSet<>()).add(subject);
         }
     }
 
-    public ResultSet runAQuery(String query) {
+    /**
+     * A class representing an edge in a graph data structure, connecting a subject node to an object node via a predicate node.
+     */
+    public static class Edge {
+        // The subject node of the edge.
+        private final Node subject;
+        // The predicate node labeling the edge.
+        private final Node predicate;
+        // The object node of the edge.
+        private final Node object;
 
-        try (QueryExecution qExec = QueryExecutionFactory.create(QueryFactory.create(query), this)) {
-            ResultSetRewindable results = ResultSetFactory.copyResults(qExec.execSelect());
-            qExec.close();
-            return results;
-        } catch (Exception e) {
-            e.printStackTrace();
+        /**
+         * Constructs a new instance of the Edge class.
+         *
+         * @param subject   the subject node of the edge.
+         * @param predicate the predicate node labeling the edge.
+         * @param object    the object node of the edge.
+         */
+        public Edge(Node subject, Node predicate, Node object) {
+            this.subject = subject;
+            this.predicate = predicate;
+            this.object = object;
         }
-        return null;
-    }
 
-//    this only works for resources. We need containsliteral method too!!!
-    public boolean contains(String subject, String predicate, String object){
-
-        return contains(createResource(subject), createProperty(predicate), createResource(object)  );
-    }
-
-    public void loadModel(String path){
-        read(path, "TURTLE");
-    }
-
-    public void loadModel(String path, String lang){
-        read(path, lang);
-    }
-
-    public void write(String file, Lang lang) {
-        try {
-            RDFDataMgr.write(new FileOutputStream(file), this, lang);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        /**
+         * Returns the subject node of the edge.
+         *
+         * @return the subject node.
+         */
+        public Node getSubject() {
+            return subject;
         }
-    }
 
-    public void write(String file) {
-        try {
-            RDFDataMgr.write(new FileOutputStream(file), this, Lang.TURTLE);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        /**
+         * Returns the predicate node labeling the edge.
+         *
+         * @return the predicate node.
+         */
+        public Node getPredicate() {
+            return predicate;
         }
-    }
 
-    public static void main(String[] args) {
-
-        Model m = ModelFactory.createDefaultModel();
-        m.add(new ResourceImpl("http://example.com"), new PropertyImpl("http://predicate"), new ResourceImpl("http://pop"));
-        Graph m2 = Graph.wrap(m);
-        m2.add("http://example2.com","http://predicate2", "http://pop2");
-
-        System.out.println(m2.size());
-       Graph model = Graph.createDefaultGraph();
-       model.add("http://example.com","http://predicate", "http://pop");
-
-        System.out.println(model.contains("http://example.com","http://predicate", "http://pop"));
+        /**
+         * Returns the object node of the edge.
+         *
+         * @return the object node.
+         */
+        public Node getObject() {
+            return object;
+        }
     }
 }
+
