@@ -40,7 +40,7 @@ public interface GraphStoreInterface {
      * @param iri The IRI of the named graph.
      * @return The named graph as a Map object, where each key-value pair represents a triple.
      */
-    Map<String, String> getGraph(String iri);
+    Graph getGraph(String iri);
 
     /**
      * Checks whether the store contains a named graph with the given IRI.

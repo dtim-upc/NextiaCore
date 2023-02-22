@@ -13,10 +13,19 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.rdf.model.Statement;
+import org.apache.jena.sys.JenaSystem;
+import org.apache.jena.system.Txn;
 
 public class GraphStoreJenaImpl implements GraphStoreInterface {
 
     private Model model;
+    private Dataset ds;
+
+//    public GraphStoreJenaImpl(String path){
+//        ds = TDBFactory.createDataset(path);
+//    }
+
+    static { JenaSystem.init(); }
 
     @Override
     public void initGraph() {
@@ -49,8 +58,14 @@ public class GraphStoreJenaImpl implements GraphStoreInterface {
      * @return The named graph as a Map object, where each key-value pair represents a triple.
      */
     @Override
-    public Map<String, String> getGraph(String iri) {
-        return null;
+    public Graph getGraph(String iri) {
+        return Txn.calculateRead(ds, ()-> {
+            if(ds.containsNamedModel(iri)){
+                Model m = ds.getNamedModel(iri);
+                return m;
+            }
+            return null;
+        });
     }
 
     /**
