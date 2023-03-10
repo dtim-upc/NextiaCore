@@ -4,7 +4,7 @@ import org.apache.jena.rdf.model.*;
 
 public class JenaToGraphAdapter {
     public static Graph convertModelToGraph(Model model) {
-        Graph graph = new Graph();
+        //Graph graph = new Graph();
 
         // Iterate over all the statements in the Jena model and add them as triples to the graph
         StmtIterator iter = model.listStatements();
@@ -18,6 +18,6 @@ public class JenaToGraphAdapter {
             
         }
 
-        return graph;
+        return null;
     }
 }
