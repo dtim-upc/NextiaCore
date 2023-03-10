@@ -23,7 +23,7 @@ public class Triple {
 	 * @param URIsubject
 	 */
 	public void setSubject(String URIsubject) {
-		// TODO - implement Triple.setSubject
+		this.subject = new URI(URIsubject);
 		throw new UnsupportedOperationException();
 	}
 
