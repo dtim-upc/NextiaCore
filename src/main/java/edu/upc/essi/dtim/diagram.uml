@@ -3,74 +3,35 @@
   <ID>JAVA</ID>
   <OriginalElement />
   <nodes>
-    <node x="-63.5" y="1448.0">edu.upc.essi.dtim.GraphStoreFactory</node>
-    <node x="301.0" y="248.0">edu.upc.essi.dtim.QueryResultSet</node>
-    <node x="8.0" y="705.0">edu.upc.essi.dtim.GraphStoreJenaImpl</node>
-    <node x="598.5" y="1426.0">edu.upc.essi.dtim.Graph</node>
-    <node x="562.0" y="181.0">edu.upc.essi.dtim.Graph.Node</node>
-    <node x="-92.0" y="-15.0">edu.upc.essi.dtim.GraphStoreInterface</node>
-    <node x="632.0" y="924.0">edu.upc.essi.dtim.Graph.Edge</node>
+    <node x="-62.75" y="83.0">edu.upc.essi.dtim.GraphStoreJenaImpl</node>
+    <node x="256.91666666666663" y="58.0">edu.upc.essi.dtim.Graph</node>
+    <node x="-100.5" y="142.0">edu.upc.essi.dtim.GraphStoreFactory</node>
+    <node x="226.91666666666663" y="-38.0">edu.upc.essi.dtim.QueryResultSet</node>
+    <node x="-108.0" y="-15.0">edu.upc.essi.dtim.GraphStoreInterface</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="edu.upc.essi.dtim.Graph.Node" target="edu.upc.essi.dtim.Graph" relationship="INNER_CLASS">
-      <point x="-80.0" y="106.0" />
-      <point x="617.0" y="1127.0" />
-      <point x="637.0" y="1127.0" />
-      <point x="-80.0" y="-61.0" />
-    </edge>
-    <edge source="edu.upc.essi.dtim.Graph.Edge" target="edu.upc.essi.dtim.Graph" relationship="INNER_CLASS">
-      <point x="-40.0" y="83.0" />
-      <point x="657.0" y="1127.0" />
-      <point x="637.0" y="1127.0" />
-      <point x="-80.0" y="-61.0" />
-    </edge>
     <edge source="edu.upc.essi.dtim.GraphStoreFactory" target="edu.upc.essi.dtim.GraphStoreInterface" relationship="TO_ONE">
-      <point x="-60.0" y="-39.0" />
-      <point x="-23.0" y="687.0" />
-      <point x="-3.0" y="687.0" />
-      <point x="-100.0" y="302.0" />
-    </edge>
-    <edge source="edu.upc.essi.dtim.Graph" target="edu.upc.essi.dtim.Graph.Node" relationship="TO_MANY">
-      <point x="80.0" y="-61.0" />
-      <point x="797.0" y="1387.0" />
-      <point x="817.0" y="1387.0" />
-      <point x="817.0" y="907.0" />
-      <point x="697.0" y="907.0" />
-      <point x="0.0" y="106.0" />
-    </edge>
-    <edge source="edu.upc.essi.dtim.Graph" target="edu.upc.essi.dtim.Graph.Edge" relationship="CREATE">
-      <point x="20.0" y="-61.0" />
-      <point x="40.0" y="83.0" />
-    </edge>
-    <edge source="edu.upc.essi.dtim.Graph" target="edu.upc.essi.dtim.Graph.Node" relationship="CREATE">
-      <point x="20.0" y="-61.0" />
-      <point x="737.0" y="1387.0" />
-      <point x="777.0" y="1387.0" />
-      <point x="80.0" y="106.0" />
+      <point x="-43.25" y="-14.5" />
+      <point x="-57.25" y="132.0" />
+      <point x="-77.75" y="132.0" />
+      <point x="-77.75" y="38.5" />
+      <point x="-62.25" y="38.5" />
+      <point x="-45.75" y="14.5" />
     </edge>
     <edge source="edu.upc.essi.dtim.GraphStoreFactory" target="edu.upc.essi.dtim.GraphStoreJenaImpl" relationship="CREATE">
-      <point x="60.0" y="-39.0" />
-      <point x="-100.0" y="302.0" />
+      <point x="43.25" y="-14.5" />
+      <point x="0.0" y="14.5" />
     </edge>
     <edge source="edu.upc.essi.dtim.GraphStoreJenaImpl" target="edu.upc.essi.dtim.GraphStoreInterface" relationship="REALIZATION">
-      <point x="0.0" y="-302.0" />
-      <point x="100.0" y="302.0" />
-    </edge>
-    <edge source="edu.upc.essi.dtim.Graph.Edge" target="edu.upc.essi.dtim.Graph.Node" relationship="TO_ONE">
-      <point x="0.0" y="-83.0" />
-      <point x="0.0" y="106.0" />
+      <point x="0.0" y="-14.5" />
+      <point x="45.75" y="14.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Compact" zoom="0.5201753000631713" showDependencies="true" x="772.9138899430739" y="708.1721442125237" />
-  <SelectedNodes>
-    <node>edu.upc.essi.dtim.QueryResultSet</node>
-  </SelectedNodes>
+  <settings layout="Hierarchic Compact" zoom="1.5" showDependencies="true" x="53.5" y="88.0" />
+  <SelectedNodes />
   <Categories>
-    <Category>Fields</Category>
     <Category>Inner Classes</Category>
-    <Category>Methods</Category>
-    <Category>Properties</Category>
   </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
