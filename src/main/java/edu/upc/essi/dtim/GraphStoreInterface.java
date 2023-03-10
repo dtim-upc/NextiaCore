@@ -108,12 +108,10 @@ public interface GraphStoreInterface {
     /**
      * Deletes all triples that match the specified pattern in the specified graph.
      *
-     * @param graphIRI     the IRI of the graph where the triples are located.
-     * @param subjectIRI   the IRI of the subject of the triples to be deleted.
-     * @param predicateIRI the IRI of the predicate of the triples to be deleted.
-     * @param objectIRI    the IRI of the object of the triples to be deleted.
+     * @param graphIRI the IRI of the graph where the triples are located.
+     * @param triple
      */
-    void deleteTriples(String graphIRI, String subjectIRI, String predicateIRI, String objectIRI);
+    void deleteTriples(String graphIRI, Triple triple);
 
     /**
      * Deletes the specified graph.

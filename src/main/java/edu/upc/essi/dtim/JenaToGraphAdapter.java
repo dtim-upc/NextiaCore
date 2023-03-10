@@ -15,19 +15,7 @@ public class JenaToGraphAdapter {
             RDFNode object = stmt.getObject();
 
             // Convert the Jena resources to our node class
-            Node s = new Node(subject.getURI());
-            Node o;
-            if (object.isLiteral()) {
-                o = new Node(object.asLiteral().getString());
-            } else {
-                o = new Node(object.asResource().getURI());
-            }
-
-            // Convert the Jena property to our edge class
-            Edge p = new Edge(predicate.getURI());
-
-            // Add the triple to the graph
-            graph.addTriple(new Triple(s, p, o));
+            
         }
 
         return graph;
