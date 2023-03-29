@@ -1,10 +1,11 @@
-package edu.upc.essi.dtim;
+package edu.upc.essi.dtim.Graph;
+
+import edu.upc.essi.dtim.Queries.QueryResult;
 
 import java.util.*;
 
 public abstract class Graph {
 
-	Project folder;
 	Collection<QueryResult> queryResult;
 	private int name;
 

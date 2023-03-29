@@ -5,6 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.upc.essi.dtim.DataSources.Dataset;
+import edu.upc.essi.dtim.Graph.Graph;
+import edu.upc.essi.dtim.Graph.Triple;
+import edu.upc.essi.dtim.Queries.Query;
+import edu.upc.essi.dtim.Queries.QueryResultSet;
+import edu.upc.essi.dtim.Queries.QuerySolution;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;

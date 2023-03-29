@@ -1,4 +1,4 @@
-package edu.upc.essi.dtim;
+package edu.upc.essi.dtim.Discovery;
 
 public class Profile {
 

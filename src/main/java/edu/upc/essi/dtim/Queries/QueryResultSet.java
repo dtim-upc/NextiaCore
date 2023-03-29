@@ -1,4 +1,4 @@
-package edu.upc.essi.dtim;
+package edu.upc.essi.dtim.Queries;
 
 import java.util.List;
 import java.util.Map;

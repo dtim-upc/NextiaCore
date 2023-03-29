@@ -1,4 +1,6 @@
-package edu.upc.essi.dtim;
+package edu.upc.essi.dtim.Graph;
+
+import edu.upc.essi.dtim.Queries.Mapping;
 
 import java.util.*;
 

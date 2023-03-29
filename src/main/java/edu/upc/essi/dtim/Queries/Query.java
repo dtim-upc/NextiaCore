@@ -1,8 +1,7 @@
-package edu.upc.essi.dtim;
+package edu.upc.essi.dtim.Queries;
 
 public class Query {
 
-	User author;
 	QueryResult queryResult;
 	private String queryId;
 	private String queryText;

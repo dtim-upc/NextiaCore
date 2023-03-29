@@ -1,5 +1,5 @@
-package edu.upc.essi.dtim;
-import edu.upc.essi.dtim.IntegratedGraph;
+package edu.upc.essi.dtim.Graph;
+
 public class GlobalGraph extends Graph {
 
 	IntegratedGraph extended;
