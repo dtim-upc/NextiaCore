@@ -4,7 +4,8 @@ package edu.upc.essi.dtim.DataSources;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
+
 
 @Getter
 @Setter
@@ -16,11 +17,11 @@ public class Dataset {
 	private Timestamp created_at;
 
 	/**
-	 *
-	 * @param name
+	 * Constructor for the Dataset class.
+	 * @param name The name of the dataset.
 	 */
 	public Dataset(String name) {
-		// TODO - implement Dataset.Dataset
+		this.name = name;
 		throw new UnsupportedOperationException();
 	}
 }
