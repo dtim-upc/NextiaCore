@@ -22,6 +22,6 @@ public class Dataset {
 	 */
 	public Dataset(String name) {
 		this.name = name;
-		throw new UnsupportedOperationException();
+		//throw new UnsupportedOperationException();
 	}
 }
