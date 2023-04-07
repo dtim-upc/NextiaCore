@@ -10,6 +10,7 @@ public class GlobalGraph extends Graph {
 	 * @param integratedGraph
 	 */
 	public GlobalGraph(IntegratedGraph integratedGraph) {
+		super(integratedGraph.getName(), integratedGraph.getTriples());
 		// TODO - implement GlobalGraph.GlobalGraph
 		throw new UnsupportedOperationException();
 	}

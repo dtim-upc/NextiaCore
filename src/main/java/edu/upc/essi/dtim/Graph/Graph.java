@@ -10,8 +10,20 @@ import java.util.*;
 public abstract class Graph {
 
 	Collection<QueryResult> queryResult;
-	private int name;
+	private URI name;
+	private Set<Triple> triples;
 
-	private String NextiaCoreAsenjoImplementationTry;
+	public Graph(URI name, Set<Triple> triples) {
+		this.name = name;
+		this.triples = triples;
+	}
+
+	public void addTriple(Triple triple) {
+		triples.add(triple);
+	}
+
+	public void removeTriple(Triple triple) {
+		triples.remove(triple);
+	}
 
 }
