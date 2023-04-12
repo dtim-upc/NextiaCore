@@ -1,4 +1,4 @@
-package edu.upc.essi.dtim.Graph;
+package edu.upc.essi.dtim.CoreGraph;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,4 @@
-package edu.upc.essi.dtim.Graph;
-
-import edu.upc.essi.dtim.Graph.Graph;
+package edu.upc.essi.dtim.CoreGraph;
 
 import java.util.Set;
 

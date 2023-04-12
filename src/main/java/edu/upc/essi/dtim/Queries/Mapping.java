@@ -1,7 +1,6 @@
 package edu.upc.essi.dtim.Queries;
 
-import edu.upc.essi.dtim.Graph.URI;
-import edu.upc.essi.dtim.Queries.QuerySolution;
+import edu.upc.essi.dtim.CoreGraph.URI;
 
 public class Mapping {
 

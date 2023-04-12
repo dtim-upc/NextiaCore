@@ -1,4 +1,4 @@
-package edu.upc.essi.dtim.Graph;
+package edu.upc.essi.dtim.CoreGraph;
 
 public class GlobalGraph extends Graph {
 
