@@ -105,3 +105,16 @@ javadoc {
         options.addBooleanOption('html5', true)
     }
 }
+
+task uberJar(type: Jar) {
+    duplicatesStrategy = 'exclude'
+    archiveClassifier = 'uber'
+    zip64(true)
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}

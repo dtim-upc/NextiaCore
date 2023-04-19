@@ -24,6 +24,14 @@ public class Graph {
 	 */
 	private Set<Triple> triples;
 
+	URI getName(){
+		return this.name;
+	}
+
+	Set<Triple> getTriples(){
+		return this.triples;
+	}
+
 	/**
 	 * Constructor to initialize the graph with a name and set of triples
 	 *
