@@ -1,4 +1,4 @@
-package edu.upc.essi.dtim.CoreGraph;
+package edu.upc.essi.dtim.Graph;
 
 import edu.upc.essi.dtim.Queries.QueryResult;
 import lombok.Getter;
@@ -23,14 +23,6 @@ public class Graph {
 	 * Set to store triples in the graph
 	 */
 	private Set<Triple> triples;
-
-	URI getName(){
-		return this.name;
-	}
-
-	Set<Triple> getTriples(){
-		return this.triples;
-	}
 
 	/**
 	 * Constructor to initialize the graph with a name and set of triples
@@ -76,7 +68,7 @@ public class Graph {
 		Set<Triple> triples = new HashSet<>();
 
 		// Create a new Graph object
-		Graph graph = new LocalGraph(new URI("defaultGraph"), triples);
+		Graph graph = new Graph(new URI("defaultGraph"), triples);
 
 		return graph;
 	}

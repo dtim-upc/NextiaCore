@@ -1,4 +1,4 @@
-package edu.upc.essi.dtim.CoreGraph;
+package edu.upc.essi.dtim.Graph;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,10 +7,10 @@ import java.util.*;
 @Getter
 @Setter
 public class URI {
-	private String value;
+	private String URI;
 
 	public URI(String value) {
-		this.value = value;
+		this.URI = value;
 	}
 
 	// Sobreescribimos el método equals para poder comparar URIs
@@ -19,12 +19,12 @@ public class URI {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		URI uri = (URI) o;
-		return Objects.equals(value, uri.value);
+		return Objects.equals(URI, uri.URI);
 	}
 
 	// Sobreescribimos el método hashCode para poder comparar URIs
 	@Override
 	public int hashCode() {
-		return Objects.hash(value);
+		return Objects.hash(URI);
 	}
 }
