@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.*;
 @Getter
 @Setter
-public class Graph {
+public abstract class Graph {
 
 	/**
 	 * Collection to store query results
@@ -60,16 +60,5 @@ public class Graph {
 	 */
 	public int size() {
 		return triples.size();
-	}
-
-	// Method to create a default graph
-	public static Graph createDefaultGraph() {
-		// Create a set of triples for the graph
-		Set<Triple> triples = new HashSet<>();
-
-		// Create a new Graph object
-		Graph graph = new Graph(new URI("defaultGraph"), triples);
-
-		return graph;
 	}
 }
