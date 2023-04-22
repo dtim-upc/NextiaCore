@@ -22,15 +22,18 @@ public abstract class Dataset {
 	/**
 	 * Constructor for the Dataset class.
 	 *
-	 * @param id   The name of the dataset.
-	 * @param name The name of the dataset.
-	 * @param path
+	 * @param id          The ID of the dataset.
+	 * @param name        The name of the dataset.
+	 * @param description A description of the dataset.
+	 * @param path        The path to the dataset file.
 	 */
-	public Dataset(String id, String name, String path) {
+	public Dataset(String id, String name, String description, String path) {
 		this.datasetId = id;
 		this.name = name;
+		this.description = description;
 		this.path = path;
 	}
+
 
 	/**
 	 * Returns a string representing the type of dataset being used.

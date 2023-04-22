@@ -15,17 +15,17 @@ import java.util.HashSet;
 import java.util.stream.Collectors;
 
 public class CsvDataset extends Dataset{
-    private final String delimiter;
     /**
      * Constructor for the CsvDataset class.
-     * @param name The name of the dataset.
+     *
+     * @param id          The ID of the dataset.
+     * @param name        The name of the dataset.
+     * @param description A description of the dataset.
+     * @param path        The path to the dataset file.
      */
-    public CsvDataset(String id, String name, String path, String delimiter) {
-        super(id, name, path);
-        this.delimiter = delimiter;
+    public CsvDataset(String id, String name, String description, String path) {
+        super(id, name, description, path);
     }
-
-
 
     /**
      * Abstract method to extract data from the dataset.

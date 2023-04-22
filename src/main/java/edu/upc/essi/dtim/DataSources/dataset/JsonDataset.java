@@ -7,11 +7,16 @@ import java.io.IOException;
 public class JsonDataset extends Dataset{
     /**
      * Constructor for the JsonDataset class.
-     * @param name The name of the dataset.
+     *
+     * @param id          The ID of the dataset.
+     * @param name        The name of the dataset.
+     * @param description A description of the dataset.
+     * @param path        The path to the dataset file.
      */
-    public JsonDataset(String id, String name, String path) {
-        super(id, name, path);
+    public JsonDataset(String id, String name, String description, String path) {
+        super(id, name, description, path);
     }
+
 
     @Override
     public String getDatasetType() {
