@@ -1,8 +1,11 @@
 package edu.upc.essi.dtim.DataSources.dataset;
 
 import edu.upc.essi.dtim.Graph.Graph;
+import edu.upc.essi.dtim.Graph.LocalGraph;
+import edu.upc.essi.dtim.Graph.URI;
 
 import java.io.IOException;
+import java.util.HashSet;
 
 public class JsonDataset extends Dataset{
     /**
@@ -32,6 +35,6 @@ public class JsonDataset extends Dataset{
      */
     @Override
     public Graph convertToGraph(String id, String name, String path) throws IOException {
-        return null;
+        return new LocalGraph(new URI(name), new HashSet<>());
     }
 }

@@ -55,9 +55,9 @@ public class CsvDataset extends Dataset{
 
         // Create a new triple for each row of data in the CSV file
         for (CSVRecord record : reader) {
-            String subjectString = record.get("subject");
-            String predicateString = record.get("predicate");
-            String objectString = record.get("object");
+            String subjectString = record.get("Name");
+            String predicateString = record.get("Age");
+            String objectString = record.get("City");
 
             URI subject = new URI(subjectString);
             URI predicate = new URI(predicateString);

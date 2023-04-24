@@ -1,10 +1,10 @@
 package edu.upc.essi.dtim.Queries;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 public class Query {
 
 	QueryResult queryResult;
