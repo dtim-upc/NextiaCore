@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CsvDatasetTest {
 
-    private final String TEST_FILE = "..\\NextiaCore\\src\\test\\java\\resources\\csvTestFile.csv";
+    private final String TEST_FILE = "..\\NextiaCore\\src\\test\\java\\resources\\csvTestFile.csv".replace("\\", "/");
     private final String TEST_ID = "test_id";
     private final String TEST_NAME = "test_name";
     private final String TEST_DESC = "test_desc";
@@ -27,7 +27,7 @@ class CsvDatasetTest {
 
     @Test
     public void testConstructorExceptionJsonFile() {
-        String WRONG_FORMAT_FILE_JSON = "..\\NextiaCore\\src\\test\\java\\resources\\jsonTestFile.json";
+        String WRONG_FORMAT_FILE_JSON = "..\\NextiaCore\\src\\test\\java\\resources\\jsonTestFile.json".replace("\\", "/");
         // Act
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new CsvDataset(TEST_ID, TEST_NAME, TEST_DESC, WRONG_FORMAT_FILE_JSON));
 
@@ -40,7 +40,7 @@ class CsvDatasetTest {
 
     @Test
     public void testConstructorExceptionTxtFile() {
-        String WRONG_FORMAT_FILE_TXT = "..\\NextiaCore\\src\\test\\java\\resources\\test.txt";
+        String WRONG_FORMAT_FILE_TXT = "..\\NextiaCore\\src\\test\\java\\resources\\test.txt".replace("\\", "/");
         // Act
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new CsvDataset(TEST_ID, TEST_NAME, TEST_DESC, WRONG_FORMAT_FILE_TXT));
 

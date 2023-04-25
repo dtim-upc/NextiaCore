@@ -27,7 +27,7 @@ class JsonDatasetTest {
 
     @Test
     public void testConstructorExceptionCsvFile() {
-        String WRONG_FORMAT_FILE_JSON = "..\\NextiaCore\\src\\test\\java\\resources\\csvTestFile.csv";
+        String WRONG_FORMAT_FILE_JSON = "..\\NextiaCore\\src\\test\\java\\resources\\csvTestFile.csv".replace("\\", "/");
         // Act
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, WRONG_FORMAT_FILE_JSON));
 
@@ -40,7 +40,7 @@ class JsonDatasetTest {
 
     @Test
     public void testConstructorExceptionTxtFile() {
-        String WRONG_FORMAT_FILE_TXT = "..\\NextiaCore\\src\\test\\java\\resources\\test.txt";
+        String WRONG_FORMAT_FILE_TXT = "..\\NextiaCore\\src\\test\\java\\resources\\test.txt".replace("\\", "/").replace("\\", "/");
         // Act
         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, () -> new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, WRONG_FORMAT_FILE_TXT));
 
