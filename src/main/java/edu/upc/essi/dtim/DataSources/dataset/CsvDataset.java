@@ -12,7 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 public class CsvDataset extends Dataset{
     /**
@@ -25,12 +25,15 @@ public class CsvDataset extends Dataset{
      */
     public CsvDataset(String id, String name, String description, String path) {
         super(id, name, description, path);
+        if (!path.endsWith(".csv")) {
+            throw new IllegalArgumentException("Invalid file format. Only CSV files are supported.");
+        }
     }
 
     /**
-     * Abstract method to extract data from the dataset.
+     * Returns the type of the dataset.
      *
-     * @return csv
+     * @return The type of the dataset as a String. In this case, it always returns "csv".
      */
     @Override
     public String getDatasetType() {
@@ -38,22 +41,22 @@ public class CsvDataset extends Dataset{
     }
 
     /**
-     * Converts a CSV file at the given path to a graph.
+     * Converts the data source located at the specified path into a graph.
      *
-     * @param id   the ID of the graph
-     * @param name the name of the graph
-     * @param path the path to the CSV file
-     * @return a graph containing the data from the CSV file
-     * @throws IOException if an I/O error occurs while reading the CSV file
+     * @param id   The unique identifier for the graph.
+     * @param name The name of the graph.
+     * @param path The path to the data source to be converted.
+     * @return A Graph object representing the converted data source.
+     * @throws IOException If there is an error reading or parsing the data source.
      */
     public Graph convertToGraph(String id, String name, String path) throws IOException {
-        Graph graph = new LocalGraph(new URI(id), new HashSet<>());
         BufferedReader br = new BufferedReader(new FileReader(path));
 
         // Use a CSV parser for the CSV file
         CSVParser reader = CSVParser.parse(br, CSVFormat.DEFAULT.withFirstRecordAsHeader());
 
         // Create a new triple for each row of data in the CSV file
+        Set<Triple> triples = new HashSet<>();
         for (CSVRecord record : reader) {
             String subjectString = record.get("Name");
             String predicateString = record.get("Age");
@@ -64,8 +67,10 @@ public class CsvDataset extends Dataset{
             URI object = new URI(objectString);
             Triple triple = new Triple(subject, predicate, object);
 
-            graph.addTriple(triple);
+            triples.add(triple);
         }
+
+        Graph graph = new LocalGraph(new URI(id), triples);
 
         return graph;
     }
