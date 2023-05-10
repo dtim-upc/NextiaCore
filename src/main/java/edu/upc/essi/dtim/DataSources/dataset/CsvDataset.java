@@ -15,6 +15,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CsvDataset extends Dataset{
+
+    public CsvDataset(){
+        super();
+    }
+    private String path;
     /**
      * Constructor for the CsvDataset class.
      *
@@ -24,10 +29,11 @@ public class CsvDataset extends Dataset{
      * @param path        The path to the dataset file.
      */
     public CsvDataset(String id, String name, String description, String path) {
-        super(id, name, description, path);
+        super(id, name, description);
         if (!path.endsWith(".csv")) {
             throw new IllegalArgumentException("Invalid file format. Only CSV files are supported.");
         }
+        this.path = path;
     }
 
     /**

@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.HashSet;
 
 public class JsonDataset extends Dataset{
+    public JsonDataset(){
+        super();
+    }
+    private String path;
     /**
      * Constructor for the JsonDataset class.
      *
@@ -17,10 +21,11 @@ public class JsonDataset extends Dataset{
      * @param path        The path to the dataset file.
      */
     public JsonDataset(String id, String name, String description, String path) {
-        super(id, name, description, path);
+        super(id, name, description);
         if (!path.endsWith(".json")) {
             throw new IllegalArgumentException("Invalid file format. Only JSON files are supported.");
         }
+        this.path = path;
     }
 
     /**
