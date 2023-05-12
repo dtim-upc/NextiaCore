@@ -4,7 +4,7 @@ plugins {
     id 'signing'
 }
 
-group = 'edu.upc.essi.dtim'
+group = 'edu.upc.essi.dtim.NextiaCore'
 version = '0.0.1-SNAPSHOT'
 
 repositories {
