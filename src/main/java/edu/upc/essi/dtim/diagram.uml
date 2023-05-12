@@ -4,7 +4,7 @@
   <OriginalElement />
   <nodes>
     <node x="-62.75" y="83.0">edu.upc.essi.dtim.GraphStoreJenaImpl</node>
-    <node x="256.91666666666663" y="58.0">edu.upc.essi.dtim.Graph</node>
+    <node x="256.91666666666663" y="58.0">edu.upc.essi.dtim.graph</node>
     <node x="-100.5" y="142.0">edu.upc.essi.dtim.GraphStoreFactory</node>
     <node x="226.91666666666663" y="-38.0">edu.upc.essi.dtim.QueryResultSet</node>
     <node x="-108.0" y="-15.0">edu.upc.essi.dtim.GraphStoreInterface</node>
