@@ -4,8 +4,6 @@ import lombok.Data;
 
 @Data
 public class Query {
-
-	QueryResult queryResult;
 	private String queryId;
 	private String queryText;
 
