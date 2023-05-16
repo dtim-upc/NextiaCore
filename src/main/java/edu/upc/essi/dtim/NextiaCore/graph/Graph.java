@@ -46,6 +46,10 @@ public abstract class Graph {
 		this.graphicalSchema = graphicalSchema;
 	}
 
+	public Graph() {
+
+	}
+
 	public String getId() {
 		return id;
 	}
