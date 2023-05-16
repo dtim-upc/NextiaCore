@@ -57,15 +57,4 @@ class CsvDatasetTest {
 
         assertEquals("csv", dataset.getDatasetType());
     }
-
-    @Test
-    public void testConvertToGraph() throws IOException {
-        CsvDataset dataset = new CsvDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
-
-        Graph graph = dataset.convertToGraph(TEST_ID, TEST_NAME, TEST_FILE);
-
-        assertNotNull(graph);
-        assertEquals(TEST_ID, graph.getName().getURI());
-        assertEquals(3, graph.getTriples().size());
-    }
 }

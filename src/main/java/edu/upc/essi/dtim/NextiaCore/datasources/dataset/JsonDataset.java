@@ -46,18 +46,4 @@ public class JsonDataset extends Dataset{
     public String getDatasetType() {
         return "json";
     }
-
-    /**
-     * Converts the data source located at the specified path into a graph.
-     *
-     * @param id   The unique identifier for the graph.
-     * @param name The name of the graph.
-     * @param path The path to the data source to be converted.
-     * @return A Graph object representing the converted data source.
-     * @throws IOException If there is an error reading or parsing the data source.
-     */
-    @Override
-    public Graph convertToGraph(String id, String name, String path) throws IOException {
-        return new LocalGraph(new URI(id), new HashSet<>());
-    }
 }

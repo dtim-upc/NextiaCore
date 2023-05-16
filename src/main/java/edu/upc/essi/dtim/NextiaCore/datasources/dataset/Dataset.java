@@ -40,17 +40,6 @@ public abstract class Dataset {
 	 */
 	public abstract String getDatasetType();
 
-	/**
-	 * Converts a data source into a graph representation.
-	 *
-	 * @param id the unique identifier for the graph
-	 * @param name the name of the graph
-	 * @param path the path to the data source to be converted
-	 * @return a graph representation of the data source
-	 * @throws IOException if there is an error reading the data source
-	 */
-	public abstract Graph convertToGraph(String id, String name, String path) throws IOException;
-
 	public String getDatasetId() {
 		return datasetId;
 	}
@@ -82,5 +71,4 @@ public abstract class Dataset {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-
 }

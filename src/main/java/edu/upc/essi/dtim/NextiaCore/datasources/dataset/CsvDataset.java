@@ -54,39 +54,4 @@ public class CsvDataset extends Dataset{
     public String getDatasetType() {
         return "csv";
     }
-
-    /**
-     * Converts the data source located at the specified path into a graph.
-     *
-     * @param id   The unique identifier for the graph.
-     * @param name The name of the graph.
-     * @param path The path to the data source to be converted.
-     * @return A Graph object representing the converted data source.
-     * @throws IOException If there is an error reading or parsing the data source.
-     */
-    public Graph convertToGraph(String id, String name, String path) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(path));
-
-        // Use a CSV parser for the CSV file
-        CSVParser reader = CSVParser.parse(br, CSVFormat.DEFAULT.withFirstRecordAsHeader());
-
-        // Create a new triple for each row of data in the CSV file
-        Set<Triple> triples = new HashSet<>();
-        for (CSVRecord record : reader) {
-            String subjectString = record.get("Name");
-            String predicateString = record.get("Age");
-            String objectString = record.get("City");
-
-            URI subject = new URI(subjectString);
-            URI predicate = new URI(predicateString);
-            URI object = new URI(objectString);
-            Triple triple = new Triple(subject, predicate, object);
-
-            triples.add(triple);
-        }
-
-        Graph graph = new LocalGraph(new URI(id), triples);
-
-        return graph;
-    }
 }

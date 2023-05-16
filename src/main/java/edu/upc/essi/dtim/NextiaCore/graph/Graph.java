@@ -15,14 +15,23 @@ public abstract class Graph {
 	Collection<QueryResult> queryResult;
 
 	/**
+	 * Id just for relational DB
+	 */
+	private String id;
+
+	/**
 	 * URI to represent the name of the graph
 	 */
 	private URI name;
 
+	private String graphicalSchema;
+
 	/**
-	 * Set to store triples in the graph
+	 * Set to store triples in the graph.
 	 */
 	private Set<Triple> triples;
+
+
 
 	/**
 	 * Constructor to initialize the graph with a name and set of triples
@@ -30,9 +39,27 @@ public abstract class Graph {
 	 * @param name     the name of the graph
 	 * @param triples  the set of triples to be stored in the graph
 	 */
-	public Graph(URI name, Set<Triple> triples) {
+	public Graph(String id, URI name, Set<Triple> triples, String graphicalSchema) {
+		this.id = id;
 		this.name = name;
 		this.triples = triples;
+		this.graphicalSchema = graphicalSchema;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getGraphicalSchema() {
+		return graphicalSchema;
+	}
+
+	public void setGraphicalSchema(String graphicalSchema) {
+		this.graphicalSchema = graphicalSchema;
 	}
 
 	/**

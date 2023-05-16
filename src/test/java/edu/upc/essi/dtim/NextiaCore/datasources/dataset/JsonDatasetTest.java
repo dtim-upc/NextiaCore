@@ -15,6 +15,8 @@ class JsonDatasetTest {
     private final String TEST_NAME = "test_name";
     private final String TEST_DESC = "test_desc";
 
+
+
     @Test
     public void testConstructor() {
         JsonDataset dataset = new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
@@ -56,18 +58,5 @@ class JsonDatasetTest {
         Dataset dataset = new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
 
         assertEquals("json", dataset.getDatasetType());
-    }
-
-    @Test
-    public void testConvertToGraph() throws IOException {
-        Dataset dataset = new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
-
-        Graph graph = dataset.convertToGraph(TEST_ID, TEST_NAME, TEST_FILE);
-
-        assertNotNull(graph);
-        assertEquals(TEST_ID, graph.getName().getURI());
-
-        //todo: implement jsonDataset to graph
-        assertEquals(0, graph.getTriples().size());
     }
 }
