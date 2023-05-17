@@ -11,8 +11,6 @@ public class Dataset {
 	private String datasetDescription;
 	private Timestamp created_at;
 
-	private Graph localGraph;
-
 	/**
 	 * Constructor for the Dataset class.
 	 *
