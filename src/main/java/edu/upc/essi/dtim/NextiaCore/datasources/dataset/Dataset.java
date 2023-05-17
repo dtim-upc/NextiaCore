@@ -1,19 +1,17 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
-
-
 import edu.upc.essi.dtim.NextiaCore.graph.Graph;
 
-import java.io.IOException;
 import java.sql.Timestamp;
 
 
-public abstract class Dataset {
+public class Dataset {
 
 	private String datasetId;
 	private String datasetName;
 	private String datasetDescription;
 	private Timestamp created_at;
-	//private List<Object> data;
+
+	private Graph localGraph;
 
 	/**
 	 * Constructor for the Dataset class.
@@ -26,19 +24,11 @@ public abstract class Dataset {
 		this.datasetId = id;
 		this.datasetName = name;
 		this.datasetDescription = description;
+		this.created_at = new Timestamp(System.currentTimeMillis());
 	}
 
 	public Dataset() {
-
 	}
-
-
-	/**
-	 * Returns a string representing the type of dataset being used.
-	 *
-	 * @return a string indicating the dataset type
-	 */
-	public abstract String getDatasetType();
 
 	public String getDatasetId() {
 		return datasetId;

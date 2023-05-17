@@ -57,6 +57,6 @@ class JsonDatasetTest {
     public void testGetDatasetType() {
         Dataset dataset = new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
 
-        assertEquals("json", dataset.getDatasetType());
+        assertEquals("json", ((JsonDataset) dataset).getDatasetType());
     }
 }

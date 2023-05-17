@@ -42,7 +42,6 @@ public class JsonDataset extends Dataset{
      *
      * @return The type of the dataset as a String. In this case, it always returns "json".
      */
-    @Override
     public String getDatasetType() {
         return "json";
     }

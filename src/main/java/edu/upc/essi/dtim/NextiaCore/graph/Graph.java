@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.util.*;
 @Getter
 @Setter
-public abstract class Graph {
+public class Graph {
 
 	/**
 	 * Collection to store query results
