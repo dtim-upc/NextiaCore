@@ -7,6 +7,6 @@ public class IntegratedGraph extends Graph {
 	GlobalGraph simple;
 
 	public IntegratedGraph(String id, URI name, Set<Triple> triples, String graphicalSchema) {
-		super(id, name, triples, graphicalSchema);
+		super(id, name, triples);
 	}
 }

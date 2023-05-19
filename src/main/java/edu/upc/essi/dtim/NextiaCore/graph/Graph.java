@@ -24,7 +24,6 @@ public class Graph {
 	 */
 	private URI name;
 
-	private String graphicalSchema;
 
 	/**
 	 * Set to store triples in the graph.
@@ -39,11 +38,10 @@ public class Graph {
 	 * @param name     the name of the graph
 	 * @param triples  the set of triples to be stored in the graph
 	 */
-	public Graph(String id, URI name, Set<Triple> triples, String graphicalSchema) {
+	public Graph(String id, URI name, Set<Triple> triples) {
 		this.id = id;
 		this.name = name;
 		this.triples = triples;
-		this.graphicalSchema = graphicalSchema;
 	}
 
 	public Graph() {
@@ -56,14 +54,6 @@ public class Graph {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getGraphicalSchema() {
-		return graphicalSchema;
-	}
-
-	public void setGraphicalSchema(String graphicalSchema) {
-		this.graphicalSchema = graphicalSchema;
 	}
 
 	/**
