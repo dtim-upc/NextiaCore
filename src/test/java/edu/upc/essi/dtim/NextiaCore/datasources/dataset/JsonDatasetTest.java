@@ -1,10 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
-import edu.upc.essi.dtim.NextiaCore.graph.Graph;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,8 +19,8 @@ class JsonDatasetTest {
         JsonDataset dataset = new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
 
         assertEquals(TEST_ID, dataset.getDatasetId());
-        assertEquals(TEST_NAME, dataset.getName());
-        assertEquals(TEST_DESC, dataset.getDescription());
+        assertEquals(TEST_NAME, dataset.getDatasetName());
+        assertEquals(TEST_DESC, dataset.getDatasetDescription());
         assertEquals(TEST_FILE, dataset.getPath());
     }
 

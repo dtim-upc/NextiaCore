@@ -1,12 +1,5 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
-import edu.upc.essi.dtim.NextiaCore.graph.Graph;
-import edu.upc.essi.dtim.NextiaCore.graph.LocalGraph;
-import edu.upc.essi.dtim.NextiaCore.graph.URI;
-
-import java.io.IOException;
-import java.util.HashSet;
-
 public class JsonDataset extends Dataset{
     public JsonDataset(){
         super();
@@ -21,6 +14,16 @@ public class JsonDataset extends Dataset{
     }
 
     private String path;
+
+    public String getDatasetType() {
+        return datasetType;
+    }
+
+    public void setDatasetType(String datasetType) {
+        this.datasetType = datasetType;
+    }
+
+    private String datasetType = "json";
     /**
      * Constructor for the JsonDataset class.
      *
@@ -35,14 +38,5 @@ public class JsonDataset extends Dataset{
             throw new IllegalArgumentException("Invalid file format. Only JSON files are supported.");
         }
         this.path = path;
-    }
-
-    /**
-     * Returns the type of the dataset.
-     *
-     * @return The type of the dataset as a String. In this case, it always returns "json".
-     */
-    public String getDatasetType() {
-        return "json";
     }
 }

@@ -1,5 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
+import edu.upc.essi.dtim.NextiaCore.graph.Graph;
+
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -36,19 +38,19 @@ public class Dataset {
 		this.datasetId = datasetId;
 	}
 
-	public String getName() {
+	public String getDatasetName() {
 		return datasetName;
 	}
 
-	public void setName(String name) {
+	public void setDatasetName(String name) {
 		this.datasetName = name;
 	}
 
-	public String getDescription() {
+	public String getDatasetDescription() {
 		return datasetDescription;
 	}
 
-	public void setDescription(String description) {
+	public void setDatasetDescription(String description) {
 		this.datasetDescription = description;
 	}
 

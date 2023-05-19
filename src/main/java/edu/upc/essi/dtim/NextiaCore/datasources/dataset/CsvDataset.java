@@ -15,6 +15,17 @@ public class CsvDataset extends Dataset{
     }
 
     private String path;
+
+    public String getDatasetType() {
+        return datasetType;
+    }
+
+    public void setDatasetType(String datasetType) {
+        this.datasetType = datasetType;
+    }
+
+    private String datasetType = "csv";
+
     /**
      * Constructor for the CsvDataset class.
      *
@@ -29,14 +40,5 @@ public class CsvDataset extends Dataset{
             throw new IllegalArgumentException("Invalid file format. Only CSV files are supported.");
         }
         this.path = path;
-    }
-
-    /**
-     * Returns the type of the dataset.
-     *
-     * @return The type of the dataset as a String. In this case, it always returns "csv".
-     */
-    public String getDatasetType() {
-        return "csv";
     }
 }
