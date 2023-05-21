@@ -1,6 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
 import edu.upc.essi.dtim.NextiaCore.datasources.Tuple;
+import edu.upc.essi.dtim.NextiaCore.graph.Graph;
 import edu.upc.essi.dtim.NextiaCore.graph.LocalGraph;
 
 import java.sql.Timestamp;
@@ -14,7 +15,7 @@ public class Dataset {
 	private String datasetDescription;
 	private Date created_at;
 
-	private Tuple localGraph;
+	private Graph localGraph;
 
 	/**
 	 * Constructor for the Dataset class.
@@ -65,11 +66,11 @@ public class Dataset {
 		this.created_at = created_at;
 	}
 
-	public Tuple getLocalGraph() {
+	public Graph getLocalGraph() {
 		return localGraph;
 	}
 
-	public void setLocalGraph(Tuple localGraph) {
+	public void setLocalGraph(Graph localGraph) {
 		this.localGraph = localGraph;
 	}
 }

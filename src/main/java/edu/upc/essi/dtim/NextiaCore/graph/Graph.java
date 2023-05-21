@@ -8,12 +8,6 @@ import java.util.*;
 @Getter
 @Setter
 public class Graph {
-
-	/**
-	 * Collection to store query results
-	 */
-	Collection<QueryResult> queryResult;
-
 	/**
 	 * Id just for relational DB
 	 */
@@ -30,7 +24,15 @@ public class Graph {
 	 */
 	private Set<Triple> triples;
 
+	private String graphicalSchema;
 
+	public String getGraphicalSchema() {
+		return graphicalSchema;
+	}
+
+	public void setGraphicalSchema(String graphicalSchema) {
+		this.graphicalSchema = graphicalSchema;
+	}
 
 	/**
 	 * Constructor to initialize the graph with a name and set of triples
