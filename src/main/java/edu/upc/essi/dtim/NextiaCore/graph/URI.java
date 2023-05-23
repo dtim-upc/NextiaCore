@@ -7,6 +7,17 @@ import java.util.*;
 @Getter
 @Setter
 public class URI {
+	public String getURI() {
+		return URI;
+	}
+
+	public void setURI(String URI) {
+		this.URI = URI;
+	}
+
+	public URI() {
+	}
+
 	private String URI;
 
 	public URI(String value) {
