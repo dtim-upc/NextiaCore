@@ -1,14 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.graph;
 
-import java.util.Set;
+public interface LocalGraph extends Graph {
+    public String getLocalGraphAttribute();
+    void setLocalGraphAttribute(String localGraphAttribute);
 
-public class LocalGraph extends Graph {
-
-    public LocalGraph(String id, URI name, Set<Triple> triples) {
-        super(id, name, triples);
-    }
-
-    public LocalGraph() {
-        super();
-    }
 }

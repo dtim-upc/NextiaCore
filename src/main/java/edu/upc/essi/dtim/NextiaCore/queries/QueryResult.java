@@ -1,7 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.queries;
 
 import edu.upc.essi.dtim.NextiaCore.graph.Triple;
-import edu.upc.essi.dtim.NextiaCore.graph.Graph;
+import edu.upc.essi.dtim.NextiaCore.graph.jena.GraphJena;
 import edu.upc.essi.dtim.NextiaCore.graph.URI;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,14 +13,14 @@ import java.util.Map;
 @Setter
 public class QueryResult implements Iterable<QuerySolution>{
 	private Query query; // The query for which this result is generated
-	private Graph graph; // The graph containing the data for the query
+	private GraphJena graphJena; // The graph containing the data for the query
 	private Map<QuerySolution, Map<URI, Triple>> result; // Mapping of QuerySolution to URI-Triple mapping
 	private Iterator<QuerySolution> querySolutionIterator; // Iterator for QuerySolution objects
 
 	// Constructor to initialize the QueryResult object
-	public QueryResult(Query query, Graph graph) {
+	public QueryResult(Query query, GraphJena graphJena) {
 		this.query = query;
-		this.graph = graph;
+		this.graphJena = graphJena;
 		this.result = new HashMap<>();
 		this.querySolutionIterator = result.keySet().iterator(); // Initialize the iterator
 	}
