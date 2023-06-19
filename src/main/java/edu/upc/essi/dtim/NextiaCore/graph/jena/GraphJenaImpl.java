@@ -14,7 +14,7 @@ import org.apache.jena.rdf.model.impl.ResourceImpl;
 import java.util.*;
 @Getter
 @Setter
-public class GraphJena implements Graph {
+public class GraphJenaImpl implements Graph {
 	Model graph;
 	String graphName;
 	private String graphicalSchema;
@@ -35,18 +35,19 @@ public class GraphJena implements Graph {
 	 * @param name     the name of the graph
 	 * @param triples  the set of triples to be stored in the graph
 	 */
-	public GraphJena(String id, String name, Model triples) {
+	public GraphJenaImpl(String id, String name, Model triples) {
 		graph = ModelFactory.createDefaultModel();
 		graphName = "http://example/"+ UUID.randomUUID().toString();
 	}
 
-	public GraphJena(String graphName){
+	public GraphJenaImpl(String graphName){
 		graph = ModelFactory.createDefaultModel();
 		this.graphName = graphName;
 	}
 
-	public GraphJena() {
-
+	public GraphJenaImpl() {
+		graph = ModelFactory.createDefaultModel();
+		graphName = "http://example/"+ UUID.randomUUID().toString();
 	}
 
 	@Override

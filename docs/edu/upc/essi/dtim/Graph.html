@@ -125,7 +125,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>graphJena.edu.upc.essi.dtim.NextiaCore.Graph</li>
+<li>graphJenaImpl.edu.upc.essi.dtim.NextiaCore.Graph</li>
 </ul>
 </li>
 </ul>
@@ -135,7 +135,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <hr>
 <pre>public class <span class="typeNameLabel">Graph</span>
 extends java.lang.Object</pre>
-<div class="block">A class that represents a graphJena data structure, where the nodes are represented by instances of the Node class and the
+<div class="block">A class that represents a graphJenaImpl data structure, where the nodes are represented by instances of the Node class and the
  edges are represented by instances of the Edge class.</div>
 </li>
 </ul>
@@ -161,14 +161,14 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Graph.Edge.html" title="class in edu.upc.essi.dtim">Graph.Edge</a></span></code></th>
 <td class="colLast">
-<div class="block">A class representing an edge in a graphJena data structure, connecting a subject node to an object node via a predicate node.</div>
+<div class="block">A class representing an edge in a graphJenaImpl data structure, connecting a subject node to an object node via a predicate node.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Graph.Node.html" title="class in edu.upc.essi.dtim">Graph.Node</a></span></code></th>
 <td class="colLast">
-<div class="block">A class that represents a node in a graphJena data structure.</div>
+<div class="block">A class that represents a node in a graphJenaImpl data structure.</div>
 </td>
 </tr>
 </table>
@@ -218,21 +218,21 @@ extends java.lang.Object</pre>
          java.lang.String&nbsp;predicate,
          java.lang.String&nbsp;object)</code></th>
 <td class="colLast">
-<div class="block">Adds a new triple to the graphJena, represented by the given subject, predicate, and object URIs.</div>
+<div class="block">Adds a new triple to the graphJenaImpl, represented by the given subject, predicate, and object URIs.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="Graph.Edge.html" title="class in edu.upc.essi.dtim">Graph.Edge</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdges()">getEdges</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Returns a set of all the edges in the graphJena.</div>
+<div class="block">Returns a set of all the edges in the graphJenaImpl.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.Set&lt;<a href="Graph.Node.html" title="class in edu.upc.essi.dtim">Graph.Node</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getNodesByUri(java.lang.String)">getNodesByUri</a></span>&#8203;(java.lang.String&nbsp;uri)</code></th>
 <td class="colLast">
-<div class="block">Returns a set of nodes in the graphJena that have the specified URI.</div>
+<div class="block">Returns a set of nodes in the graphJenaImpl that have the specified URI.</div>
 </td>
 </tr>
 </table>
@@ -288,7 +288,7 @@ extends java.lang.Object</pre>
 <pre class="methodSignature">public&nbsp;void&nbsp;addTriple&#8203;(java.lang.String&nbsp;subject,
                       java.lang.String&nbsp;predicate,
                       java.lang.String&nbsp;object)</pre>
-<div class="block">Adds a new triple to the graphJena, represented by the given subject, predicate, and object URIs.</div>
+<div class="block">Adds a new triple to the graphJenaImpl, represented by the given subject, predicate, and object URIs.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>subject</code> - the URI of the subject node.</dd>
@@ -304,12 +304,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getNodesByUri</h4>
 <pre class="methodSignature">public&nbsp;java.util.Set&lt;<a href="Graph.Node.html" title="class in edu.upc.essi.dtim">Graph.Node</a>&gt;&nbsp;getNodesByUri&#8203;(java.lang.String&nbsp;uri)</pre>
-<div class="block">Returns a set of nodes in the graphJena that have the specified URI.</div>
+<div class="block">Returns a set of nodes in the graphJenaImpl that have the specified URI.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>uri</code> - the URI to search for.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a set of nodes in the graphJena that have the specified URI.</dd>
+<dd>a set of nodes in the graphJenaImpl that have the specified URI.</dd>
 </dl>
 </li>
 </ul>
@@ -320,10 +320,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getEdges</h4>
 <pre class="methodSignature">public&nbsp;java.util.Set&lt;<a href="Graph.Edge.html" title="class in edu.upc.essi.dtim">Graph.Edge</a>&gt;&nbsp;getEdges()</pre>
-<div class="block">Returns a set of all the edges in the graphJena.</div>
+<div class="block">Returns a set of all the edges in the graphJenaImpl.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a set of all the edges in the graphJena.</dd>
+<dd>a set of all the edges in the graphJenaImpl.</dd>
 </dl>
 </li>
 </ul>
