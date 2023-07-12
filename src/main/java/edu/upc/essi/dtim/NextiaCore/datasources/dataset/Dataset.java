@@ -2,6 +2,7 @@ package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
 import edu.upc.essi.dtim.NextiaCore.graph.Graph;
 import edu.upc.essi.dtim.NextiaCore.graph.jena.GraphJenaImpl;
+import edu.upc.essi.dtim.NextiaCore.pruebaORMinterface.ormPruebaImpl;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -14,6 +15,7 @@ public class Dataset {
 	private String datasetDescription;
 	private Date created_at;
 
+	/*
 	public GraphJenaImpl getLocalGraph() {
 		return localGraph;
 	}
@@ -21,8 +23,19 @@ public class Dataset {
 	public void setLocalGraph(GraphJenaImpl localGraph) {
 		this.localGraph = localGraph;
 	}
-
 	private GraphJenaImpl localGraph;
+
+	 */
+
+	public ormPruebaImpl getLocalGraph() {
+		return localGraph;
+	}
+
+	public void setLocalGraph(ormPruebaImpl localGraph) {
+		this.localGraph = localGraph;
+	}
+
+	private ormPruebaImpl localGraph;
 
 	/**
 	 * Constructor for the Dataset class.

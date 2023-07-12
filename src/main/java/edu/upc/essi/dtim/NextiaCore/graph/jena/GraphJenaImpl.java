@@ -29,7 +29,7 @@ public class GraphJenaImpl implements Graph {
 		this.graphName = graphName;
 	}
 
-	String graphName;
+	private String graphName;
 	private String graphicalSchema;
 
 	@Override
