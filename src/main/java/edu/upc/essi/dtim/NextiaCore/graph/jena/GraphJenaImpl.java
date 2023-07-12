@@ -4,13 +4,14 @@ import edu.upc.essi.dtim.NextiaCore.graph.Graph;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.jena.query.*;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.rdf.model.*;
 import org.apache.jena.rdf.model.impl.PropertyImpl;
 import org.apache.jena.rdf.model.impl.ResourceImpl;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.*;
 @Getter
 @Setter
@@ -102,6 +103,49 @@ public class GraphJenaImpl implements Graph {
 			e.printStackTrace();
 		}
 		return resultsList;
+	}
+
+	@Override
+	public ResIterator getSubjects() {
+		List<String> subjects = new ArrayList<>();
+
+		ResIterator iter = graph.listSubjects();
+		return iter;
+		/*while (iter.hasNext()) {
+			Resource resource = iter.nextResource();
+			subjects.add(resource.getURI());
+		}
+
+		return subjects;*/
+	}
+
+	@Override
+	public List<String> getPredicates() {
+		List<String> predicates = new ArrayList<>();
+
+		StmtIterator iter = graph.listStatements();
+		while (iter.hasNext()) {
+			Statement statement = iter.nextStatement();
+			Property property = statement.getPredicate();
+			predicates.add(property.getURI());
+		}
+
+		return predicates;
+	}
+
+	@Override
+	public void write(String file) {
+		try {
+			RDFDataMgr.write(new FileOutputStream(file), graph, Lang.TURTLE);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
+	//todo delete when bootsrapp is done
+	@Override
+	public void setModel(Model model){
+		this.graph = model;
 	}
 
 }

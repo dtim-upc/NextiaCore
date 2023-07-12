@@ -13,7 +13,7 @@ public class Dataset {
 	private String datasetDescription;
 	private Date created_at;
 
-	private GraphJenaImpl localGraphJenaImpl;
+	//private GraphJenaImpl localGraphJenaImpl;
 
 	/**
 	 * Constructor for the Dataset class.
@@ -63,7 +63,7 @@ public class Dataset {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-
+/*
 	public GraphJenaImpl getLocalGraph() {
 		return localGraphJenaImpl;
 	}
@@ -71,4 +71,6 @@ public class Dataset {
 	public void setLocalGraph(GraphJenaImpl localGraphJenaImpl) {
 		this.localGraphJenaImpl = localGraphJenaImpl;
 	}
+
+ */
 }

@@ -1,5 +1,8 @@
 package edu.upc.essi.dtim.NextiaCore.graph;
 
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ResIterator;
+
 import java.util.List;
 import java.util.Map;
 
@@ -15,4 +18,13 @@ public interface Graph {
     List<Map<String, Object>> query(String sparql);
     String getGraphicalSchema();
     void setGraphicalSchema(String graphicalSchema);
+
+    ResIterator getSubjects();
+
+    List<String> getPredicates();
+
+    void write(String file);
+
+    //todo delete when bootsrapp is done
+    void setModel(Model model);
 }
