@@ -13,10 +13,22 @@ import org.apache.jena.riot.RDFDataMgr;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.*;
-@Getter
-@Setter
+
 public class GraphJenaImpl implements Graph {
+	public Model getGraph() {
+		return graph;
+	}
+
+	public void setGraph(Model graph) {
+		this.graph = graph;
+	}
+
 	Model graph;
+
+	public void setGraphName(String graphName) {
+		this.graphName = graphName;
+	}
+
 	String graphName;
 	private String graphicalSchema;
 
