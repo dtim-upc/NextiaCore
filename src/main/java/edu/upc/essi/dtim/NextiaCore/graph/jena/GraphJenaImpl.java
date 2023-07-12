@@ -23,7 +23,7 @@ public class GraphJenaImpl implements Graph {
 		this.graph = graph;
 	}
 
-	Model graph;
+	private transient Model graph;
 
 	public void setGraphName(String graphName) {
 		this.graphName = graphName;
