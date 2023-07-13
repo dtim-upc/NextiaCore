@@ -1,5 +1,6 @@
 package edu.upc.essi.dtim.NextiaCore.pruebaORMinterface;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.jena.rdf.model.Model;
 
 public class ormPruebaImpl implements ormPrueba{
@@ -14,18 +15,18 @@ public class ormPruebaImpl implements ormPrueba{
     private String id;
 
     private String graphicalSchema;
-/*
-    public Model getGraph() {
-        return graph;
+
+    @Override
+    public Model getGraphoLoko() {
+        return graphoLoko;
+    }
+    @Override
+    public void setGraphoLoko(Model graphoLoko) {
+        this.graphoLoko = graphoLoko;
     }
 
-    public void setGraph(Model graph) {
-        this.graph = graph;
-    }
-
-    private transient Model graph;
-
- */
+    @JsonIgnore
+    private Model graphoLoko;
 
     @Override
     public String getGraphicalSchema() {
