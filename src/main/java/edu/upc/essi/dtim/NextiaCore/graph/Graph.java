@@ -16,7 +16,15 @@ public interface Graph {
     void deleteTriple(String subject, String predicate, String object);
 
     List<Map<String, Object>> query(String sparql);
+
+    Model getGraph();
+
+    void setGraph(Model graph);
+
     String getGraphicalSchema();
+
+    void setGraphName(String graphName);
+
     void setGraphicalSchema(String graphicalSchema);
 
     ResIterator getSubjects();
@@ -24,7 +32,4 @@ public interface Graph {
     List<String> getPredicates();
 
     void write(String file);
-
-    //todo delete when bootsrapp is done
-    void setModel(Model model);
 }

@@ -15,7 +15,7 @@ public class Dataset {
 	private String datasetDescription;
 	private Date created_at;
 
-	/*
+/*
 	public GraphJenaImpl getLocalGraph() {
 		return localGraph;
 	}
@@ -24,9 +24,7 @@ public class Dataset {
 		this.localGraph = localGraph;
 	}
 	private GraphJenaImpl localGraph;
-
-	 */
-
+*/
 	public ormPruebaImpl getLocalGraph() {
 		return localGraph;
 	}

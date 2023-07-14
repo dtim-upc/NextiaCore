@@ -1,8 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.graph.jena;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.upc.essi.dtim.NextiaCore.graph.Graph;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.*;
 import org.apache.jena.rdf.model.impl.PropertyImpl;
@@ -15,22 +14,28 @@ import java.io.FileOutputStream;
 import java.util.*;
 
 public class GraphJenaImpl implements Graph {
-	public Model getGraph() {
-		return graph;
+	@Override
+	public String getGraphName() {
+		return graphName;
 	}
-
-	public void setGraph(Model graph) {
-		this.graph = graph;
-	}
-
-	private transient Model graph;
-
+	@Override
 	public void setGraphName(String graphName) {
 		this.graphName = graphName;
 	}
 
 	private String graphName;
 	private String graphicalSchema;
+
+	@JsonIgnore
+	private Model graph;
+	@Override
+	public Model getGraph() {
+		return graph;
+	}
+	@Override
+	public void setGraph(Model graph) {
+		this.graph = graph;
+	}
 
 	@Override
 	public String getGraphicalSchema() {
@@ -41,6 +46,7 @@ public class GraphJenaImpl implements Graph {
 	public void setGraphicalSchema(String graphicalSchema) {
 		this.graphicalSchema = graphicalSchema;
 	}
+
 
 	/**
 	 * Constructor to initialize the graph with a name and set of triples
@@ -61,11 +67,6 @@ public class GraphJenaImpl implements Graph {
 	public GraphJenaImpl() {
 		graph = ModelFactory.createDefaultModel();
 		graphName = "http://example/"+ UUID.randomUUID().toString();
-	}
-
-	@Override
-	public String getGraphName() {
-		return graphName;
 	}
 
 	@Override
@@ -153,11 +154,4 @@ public class GraphJenaImpl implements Graph {
 			e.printStackTrace();
 		}
 	}
-
-	//todo delete when bootsrapp is done
-	@Override
-	public void setModel(Model model){
-		this.graph = model;
-	}
-
 }

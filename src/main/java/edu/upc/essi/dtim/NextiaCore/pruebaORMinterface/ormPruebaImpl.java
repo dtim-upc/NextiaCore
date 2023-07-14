@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.jena.rdf.model.Model;
 
 public class ormPruebaImpl implements ormPrueba{
-    public String getId() {
-        return id;
+    public String getGraphName() {
+        return graphName;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setGraphName(String graphName) {
+        this.graphName = graphName;
     }
 
-    private String id;
+    private String graphName;
 
     private String graphicalSchema;
 
