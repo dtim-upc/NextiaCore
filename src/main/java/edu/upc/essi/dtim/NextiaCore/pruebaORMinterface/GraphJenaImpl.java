@@ -119,4 +119,22 @@ public class GraphJenaImpl implements Graph {
     public void write(String file) {
 
     }
+
+    /**
+     * @param propertyIRI
+     * @return
+     */
+    @Override
+    public String getDomainOfProperty(String propertyIRI) {
+        return null;
+    }
+
+    /**
+     * @param resourceIRI
+     * @return
+     */
+    @Override
+    public String getRDFSLabel(String resourceIRI) {
+        return null;
+    }
 }

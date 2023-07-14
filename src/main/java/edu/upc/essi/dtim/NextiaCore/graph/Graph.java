@@ -32,4 +32,8 @@ public interface Graph {
     List<String> getPredicates();
 
     void write(String file);
+
+    String getDomainOfProperty(String propertyIRI);
+
+    String getRDFSLabel(String resourceIRI);
 }

@@ -9,7 +9,7 @@ import java.util.Map;
 public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph {
 
     public LocalGraphJenaImpl(String id, String name, Model triples) {
-        super(id, name, triples);
+        super();
     }
 
     public LocalGraphJenaImpl() {

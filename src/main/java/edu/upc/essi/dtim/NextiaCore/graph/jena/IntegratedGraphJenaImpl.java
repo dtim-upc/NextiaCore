@@ -8,7 +8,7 @@ public class IntegratedGraphJenaImpl extends GraphJenaImpl implements Integrated
 	GlobalGraphJenaImpl simple;
 
 	public IntegratedGraphJenaImpl(String id, String name, Model triples, String graphicalSchema) {
-		super(id, name, triples);
+		super();
 	}
 
 	public IntegratedGraphJenaImpl() {

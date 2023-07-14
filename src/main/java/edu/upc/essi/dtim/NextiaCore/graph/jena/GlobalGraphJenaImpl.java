@@ -13,7 +13,7 @@ public class GlobalGraphJenaImpl extends GraphJenaImpl implements GlobalGraph {
 	 * @param integratedGraph IntegratedGraph
 	 */
 	public GlobalGraphJenaImpl(IntegratedGraphJenaImpl integratedGraph) {
-		super(null, integratedGraph.getGraphName(), integratedGraph.getGraph());
+		super();
 		// TODO - implement GlobalGraph.GlobalGraph
 		throw new UnsupportedOperationException();
 	}

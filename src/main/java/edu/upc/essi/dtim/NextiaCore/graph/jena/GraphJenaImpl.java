@@ -8,6 +8,7 @@ import org.apache.jena.rdf.model.impl.PropertyImpl;
 import org.apache.jena.rdf.model.impl.ResourceImpl;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.vocabulary.RDFS;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,9 +21,11 @@ public class GraphJenaImpl implements Graph {
 	@JsonIgnore
 	private Model graph;
 
+	@Override
 	public String getGraphName() {
 		return graphName;
 	}
+	@Override
 	public void setGraphName(String graphName) {
 		this.graphName = graphName;
 	}
@@ -47,19 +50,19 @@ public class GraphJenaImpl implements Graph {
 	 * @param name     the name of the graph
 	 * @param triples  the set of triples to be stored in the graph
 	 */
-	public GraphJenaImpl(String id, String name, Model triples) {
-		graph = ModelFactory.createDefaultModel();
-		graphName = "http://example/"+ UUID.randomUUID().toString();
-	}
+	/*public GraphJenaImpl(String id, String name, Model triples) {
+		this.graph = ModelFactory.createDefaultModel();
+		this.graphName = "http://example/";//+ UUID.randomUUID().toString();
+	}*/
 
 	public GraphJenaImpl(String graphName){
-		graph = ModelFactory.createDefaultModel();
+		this.graph = ModelFactory.createDefaultModel();
 		this.graphName = graphName;
 	}
 
 	public GraphJenaImpl() {
-		graph = ModelFactory.createDefaultModel();
-		graphName = "http://example/"+ UUID.randomUUID().toString();
+		this.graph = ModelFactory.createDefaultModel();
+		this.graphName = "http://example/";//+ UUID.randomUUID().toString();
 	}
 
 	@Override
@@ -146,5 +149,31 @@ public class GraphJenaImpl implements Graph {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public String getDomainOfProperty(String propertyIRI) {
+		String query = " SELECT ?domain WHERE { <"+propertyIRI+"> <"+ RDFS.domain.toString()+"> ?domain. }";
+
+		List<Map<String, Object>> res = query(query);
+
+		if(!res.isEmpty()){
+			return res.get(0).get("domain").toString();
+		}
+
+		return null;
+	}
+
+	@Override
+	public String getRDFSLabel(String resourceIRI) {
+		String query = " SELECT ?label WHERE { <"+resourceIRI+"> <"+ RDFS.label.toString()+"> ?label. }  ";
+
+		List<Map<String, Object>> res = query(query);
+
+		if(!res.isEmpty()){
+			return res.get(0).get("label").toString();
+		}
+
+		return null;
 	}
 }
