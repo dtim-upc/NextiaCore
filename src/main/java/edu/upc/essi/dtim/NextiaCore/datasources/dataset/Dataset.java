@@ -85,14 +85,4 @@ public class Dataset {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-/*
-	public GraphJenaImpl getLocalGraph() {
-		return localGraphJenaImpl;
-	}
-
-	public void setLocalGraph(GraphJenaImpl localGraphJenaImpl) {
-		this.localGraphJenaImpl = localGraphJenaImpl;
-	}
-
- */
 }

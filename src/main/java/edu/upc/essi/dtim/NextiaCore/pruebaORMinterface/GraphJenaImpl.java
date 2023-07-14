@@ -3,12 +3,29 @@ package edu.upc.essi.dtim.NextiaCore.pruebaORMinterface;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.upc.essi.dtim.NextiaCore.graph.Graph;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.ResIterator;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class GraphJenaImpl implements Graph {
+    /*
+    public GraphJenaImpl(String id, String name, Model triples) {
+        this.graph = ModelFactory.createDefaultModel();
+        this.graphName = "http://example/"+ name;
+    }
+
+    public GraphJenaImpl(String graphNameA){
+        this.graph = ModelFactory.createDefaultModel();
+        this.graphName = graphNameA;
+    }*/
+    public GraphJenaImpl() {
+        this.graphName = "http://example/";//+ UUID.randomUUID().toString();
+        this.graph = ModelFactory.createDefaultModel();
+    }
+
     private String graphName;
 
     private String graphicalSchema;
