@@ -14,35 +14,28 @@ import java.io.FileOutputStream;
 import java.util.*;
 
 public class GraphJenaImpl implements Graph {
-	@Override
-	public String getGraphName() {
-		return graphName;
-	}
-	@Override
-	public void setGraphName(String graphName) {
-		this.graphName = graphName;
-	}
-
 	private String graphName;
 	private String graphicalSchema;
 
 	@JsonIgnore
 	private Model graph;
-	@Override
+
+	public String getGraphName() {
+		return graphName;
+	}
+	public void setGraphName(String graphName) {
+		this.graphName = graphName;
+	}
+
 	public Model getGraph() {
 		return graph;
 	}
-	@Override
 	public void setGraph(Model graph) {
 		this.graph = graph;
 	}
-
-	@Override
 	public String getGraphicalSchema() {
 		return graphicalSchema;
 	}
-
-	@Override
 	public void setGraphicalSchema(String graphicalSchema) {
 		this.graphicalSchema = graphicalSchema;
 	}

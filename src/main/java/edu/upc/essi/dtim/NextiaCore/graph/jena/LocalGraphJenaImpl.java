@@ -19,7 +19,6 @@ public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph {
     /**
      * @return
      */
-    @Override
     public String getGraphName() {
         return super.getGraphName();
     }
