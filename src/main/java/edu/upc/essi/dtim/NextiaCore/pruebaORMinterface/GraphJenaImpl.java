@@ -11,16 +11,17 @@ import java.util.Map;
 import java.util.UUID;
 
 public class GraphJenaImpl implements Graph {
+
     /*
     public GraphJenaImpl(String id, String name, Model triples) {
         this.graph = ModelFactory.createDefaultModel();
-        this.graphName = "http://example/"+ name;
-    }
+        this.graphName = (name != null) ? "http://example/" + name : "null";
+    }*/
 
     public GraphJenaImpl(String graphNameA){
         this.graph = ModelFactory.createDefaultModel();
         this.graphName = graphNameA;
-    }*/
+    }
     public GraphJenaImpl() {
         this.graphName = "http://example/";//+ UUID.randomUUID().toString();
         this.graph = ModelFactory.createDefaultModel();
