@@ -15,73 +15,67 @@ import java.io.FileOutputStream;
 import java.util.*;
 
 public class GraphJenaImpl implements Graph {
+
+    /*
+    public GraphJenaImpl(String id, String name, Model triples) {
+        this.graph = ModelFactory.createDefaultModel();
+        this.graphName = (name != null) ? "http://example/" + name : "null";
+    }*/
+
+	public GraphJenaImpl(String graphNameA){
+		this.graph = ModelFactory.createDefaultModel();
+		this.graphName = graphNameA;
+	}
+	public GraphJenaImpl() {
+		this.graphName = "http://example/";//+ UUID.randomUUID().toString();
+		this.graph = ModelFactory.createDefaultModel();
+	}
+
 	private String graphName;
+
 	private String graphicalSchema;
 
-	@JsonIgnore
-	private Model graph;
-
-	@Override
 	public String getGraphName() {
 		return graphName;
 	}
-	@Override
-	public void setGraphName(String graphName) {
-		this.graphName = graphName;
-	}
-
-	public Model getGraph() {
-		return graph;
-	}
-	public void setGraph(Model graph) {
-		this.graph = graph;
-	}
-	public String getGraphicalSchema() {
-		return graphicalSchema;
-	}
-	public void setGraphicalSchema(String graphicalSchema) {
-		this.graphicalSchema = graphicalSchema;
-	}
-
 
 	/**
-	 * Constructor to initialize the graph with a name and set of triples
-	 *
-	 * @param name     the name of the graph
-	 * @param triples  the set of triples to be stored in the graph
+	 * @param subject
+	 * @param predicate
+	 * @param object
 	 */
-	/*public GraphJenaImpl(String id, String name, Model triples) {
-		this.graph = ModelFactory.createDefaultModel();
-		this.graphName = "http://example/";//+ UUID.randomUUID().toString();
-	}*/
-
-	public GraphJenaImpl(String graphName){
-		this.graph = ModelFactory.createDefaultModel();
-		this.graphName = graphName;
-	}
-
-	public GraphJenaImpl() {
-		this.graph = ModelFactory.createDefaultModel();
-		this.graphName = "http://example/";//+ UUID.randomUUID().toString();
-	}
-
 	@Override
 	public void addTriple(String subject, String predicate, String object) {
 		Resource r = graph.createResource(subject);
 		r.addProperty(graph.createProperty(predicate), graph.createResource(object));
 	}
 
+
+	/**
+	 * @param subject
+	 * @param predicate
+	 * @param literal
+	 */
 	@Override
 	public void addTripleLiteral(String subject, String predicate, String literal) {
 		Resource r = graph.createResource(subject);
 		r.addProperty(graph.createProperty(predicate), literal);
 	}
 
+	/**
+	 * @param subject
+	 * @param predicate
+	 * @param object
+	 */
 	@Override
 	public void deleteTriple(String subject, String predicate, String object) {
 		graph.removeAll(new ResourceImpl(subject), new PropertyImpl(predicate), new ResourceImpl(object));
 	}
 
+	/**
+	 * @param sparql
+	 * @return
+	 */
 	@Override
 	public List<Map<String, Object>> query(String sparql) {
 		List<Map<String, Object>> resultsList = new ArrayList<>();
@@ -112,22 +106,55 @@ public class GraphJenaImpl implements Graph {
 			e.printStackTrace();
 		}
 		return resultsList;
+
+
+		//return null;
 	}
 
+	public void setGraphName(String graphName) {
+		this.graphName = graphName;
+	}
+
+	public Model getGraph() {
+		return graph;
+	}
+	public void setGraph(Model graph) {
+		this.graph = graph;
+	}
+
+	@JsonIgnore
+	private Model graph;
+
+	public String getGraphicalSchema() {
+		return graphicalSchema;
+	}
+
+	public void setGraphicalSchema(String graphicalSchema) {
+		this.graphicalSchema = graphicalSchema;
+	}
+
+	/**
+	 * @return
+	 */
 	@Override
 	public ResIterator getSubjects() {
 		List<String> subjects = new ArrayList<>();
 
 		ResIterator iter = graph.listSubjects();
 		return iter;
+
+
 		/*while (iter.hasNext()) {
 			Resource resource = iter.nextResource();
 			subjects.add(resource.getURI());
 		}
-
-		return subjects;*/
+		return subjects;
+		*/
 	}
 
+	/**
+	 * @return
+	 */
 	@Override
 	public List<String> getPredicates() {
 		List<String> predicates = new ArrayList<>();
@@ -142,6 +169,9 @@ public class GraphJenaImpl implements Graph {
 		return predicates;
 	}
 
+	/**
+	 * @param file
+	 */
 	@Override
 	public void write(String file) {
 		try {
@@ -151,29 +181,43 @@ public class GraphJenaImpl implements Graph {
 		}
 	}
 
+	/**
+	 * @param propertyIRI
+	 * @return
+	 */
 	@Override
 	public String getDomainOfProperty(String propertyIRI) {
-		String query = " SELECT ?domain WHERE { <"+propertyIRI+"> <"+ RDFS.domain.toString()+"> ?domain. }";
+        /*
+        String query = " SELECT ?domain WHERE { <"+propertyIRI+"> <"+ RDFS.domain.toString()+"> ?domain. }";
 
-		List<Map<String, Object>> res = query(query);
+        List<Map<String, Object>> res = query(query);
 
-		if(!res.isEmpty()){
-			return res.get(0).get("domain").toString();
-		}
-
+        if(!res.isEmpty()){
+            return res.get(0).get("domain").toString();
+        }
+*/
 		return null;
+
+
 	}
 
+	/**
+	 * @param resourceIRI
+	 * @return
+	 */
 	@Override
 	public String getRDFSLabel(String resourceIRI) {
-		String query = " SELECT ?label WHERE { <"+resourceIRI+"> <"+ RDFS.label.toString()+"> ?label. }  ";
+        /*
+        String query = " SELECT ?label WHERE { <"+resourceIRI+"> <"+ RDFS.label.toString()+"> ?label. }  ";
 
-		List<Map<String, Object>> res = query(query);
+        List<Map<String, Object>> res = query(query);
 
-		if(!res.isEmpty()){
-			return res.get(0).get("label").toString();
-		}
-
+        if(!res.isEmpty()){
+            return res.get(0).get("label").toString();
+        }
+        */
 		return null;
+
+
 	}
 }
