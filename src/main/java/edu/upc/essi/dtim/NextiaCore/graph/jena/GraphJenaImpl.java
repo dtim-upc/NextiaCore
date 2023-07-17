@@ -27,7 +27,7 @@ public class GraphJenaImpl implements Graph {
 		this.graphName = graphNameA;
 	}
 	public GraphJenaImpl() {
-		this.graphName = "http://example/";//+ UUID.randomUUID().toString();
+		//this.graphName = "http://example/"+ UUID.randomUUID().toString();
 		this.graph = ModelFactory.createDefaultModel();
 	}
 
