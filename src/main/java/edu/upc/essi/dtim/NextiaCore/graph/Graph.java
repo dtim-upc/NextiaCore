@@ -27,9 +27,9 @@ public interface Graph {
 
     void setGraphicalSchema(String graphicalSchema);
 
-    ResIterator getSubjects();
+    ResIterator retrieveSubjects();
 
-    List<String> getPredicates();
+    List<String> retrievePredicates();
 
     void write(String file);
 

@@ -137,7 +137,7 @@ public class GraphJenaImpl implements Graph {
 	 * @return
 	 */
 	@Override
-	public ResIterator getSubjects() {
+	public ResIterator retrieveSubjects() {
 		List<String> subjects = new ArrayList<>();
 
 		ResIterator iter = graph.listSubjects();
@@ -156,7 +156,7 @@ public class GraphJenaImpl implements Graph {
 	 * @return
 	 */
 	@Override
-	public List<String> getPredicates() {
+	public List<String> retrievePredicates() {
 		List<String> predicates = new ArrayList<>();
 
 		StmtIterator iter = graph.listStatements();
