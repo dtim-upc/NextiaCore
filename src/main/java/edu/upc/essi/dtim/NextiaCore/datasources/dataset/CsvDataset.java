@@ -16,16 +16,6 @@ public class CsvDataset extends Dataset{
 
     private String path;
 
-    public String getDatasetType() {
-        return datasetType;
-    }
-
-    public void setDatasetType(String datasetType) {
-        this.datasetType = datasetType;
-    }
-
-    private String datasetType = "csv";
-
     /**
      * Constructor for the CsvDataset class.
      *

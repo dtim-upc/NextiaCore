@@ -15,15 +15,6 @@ public class JsonDataset extends Dataset{
 
     private String path;
 
-    public String getDatasetType() {
-        return datasetType;
-    }
-
-    public void setDatasetType(String datasetType) {
-        this.datasetType = datasetType;
-    }
-
-    private String datasetType = "json";
     /**
      * Constructor for the JsonDataset class.
      *
