@@ -1,12 +1,13 @@
 package edu.upc.essi.dtim.NextiaCore.graph.jena;
 
+import edu.upc.essi.dtim.NextiaCore.graph.Graph;
 import edu.upc.essi.dtim.NextiaCore.graph.LocalGraph;
 import org.apache.jena.rdf.model.Model;
 
 import java.util.List;
 import java.util.Map;
 
-public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph {
+public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph, Graph {
 
     public LocalGraphJenaImpl(String id, String name, Model triples) {
         super();

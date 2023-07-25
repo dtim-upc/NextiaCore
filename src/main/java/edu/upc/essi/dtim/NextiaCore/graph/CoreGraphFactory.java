@@ -8,6 +8,22 @@ import edu.upc.essi.dtim.NextiaCore.graph.jena.LocalGraphJenaImpl;
 
 public class CoreGraphFactory {
 
+    public static LocalGraphJenaImpl createLocalGraph() {
+        return new LocalGraphJenaImpl();
+    }
+
+    public static IntegratedGraphJenaImpl createIntegratedGraph() {
+        return new IntegratedGraphJenaImpl();
+    }
+
+    public static GlobalGraphJenaImpl createGlobalGraph() {
+        return new GlobalGraphJenaImpl();
+    }
+
+    public static GraphJenaImpl createNormalGraph() {
+        return new GraphJenaImpl();
+    }
+
     public static Graph createGraphInstance(String graphType) {
         if (graphType.equalsIgnoreCase("local" )) {
             return new LocalGraphJenaImpl();
