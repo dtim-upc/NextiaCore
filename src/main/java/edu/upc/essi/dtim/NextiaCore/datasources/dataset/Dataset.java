@@ -48,6 +48,7 @@ public class Dataset extends DataResource {
 	 * @param description A description of the dataset.
 	 */
 	public Dataset(String id, String name, String description) {
+		super(id);
 		this.datasetName = name;
 		this.datasetDescription = description;
 		this.created_at = new Date(System.currentTimeMillis());
