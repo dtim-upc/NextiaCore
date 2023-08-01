@@ -7,15 +7,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataRepository extends DataResource {
+    public DataRepository() {
+
+        //datasets = new ArrayList<>();
+    }
+
     private List<Dataset> datasets;
 
-    public DataRepository() {
-        datasets = new ArrayList<>();
+    public void setDatasets(List<Dataset> datasets) {
+        this.datasets = datasets;
     }
+
 
     public List<Dataset> getDatasets() {
         return datasets;
     }
+
 
     public void addDataset(Dataset dataset) {
         datasets.add(dataset);
