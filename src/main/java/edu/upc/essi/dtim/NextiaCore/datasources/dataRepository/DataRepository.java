@@ -14,6 +14,16 @@ public class DataRepository extends DataResource {
 
     private List<Dataset> datasets;
 
+    private String repositoryName;
+
+    public String getRepositoryName() {
+        return repositoryName;
+    }
+
+    public void setRepositoryName(String repositoryName) {
+        this.repositoryName = repositoryName;
+    }
+
     public void setDatasets(List<Dataset> datasets) {
         this.datasets = datasets;
     }
