@@ -36,11 +36,9 @@ public class DataRepository extends DataResource {
 
     public void addDataset(Dataset dataset) {
         datasets.add(dataset);
-        dataset.setRepository(this); // Establecer la referencia al DataRepository en el Dataset
     }
 
     public void removeDataset(Dataset dataset) {
         datasets.remove(dataset);
-        dataset.setRepository(null); // Eliminar la referencia al DataRepository en el Dataset
     }
 }

@@ -1,11 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
 import edu.upc.essi.dtim.NextiaCore.datasources.DataResource;
-import edu.upc.essi.dtim.NextiaCore.datasources.dataRepository.DataRepository;
-import edu.upc.essi.dtim.NextiaCore.graph.LocalGraph;
-import edu.upc.essi.dtim.NextiaCore.graph.jena.GraphJenaImpl;
 import edu.upc.essi.dtim.NextiaCore.graph.jena.LocalGraphJenaImpl;
-//import edu.upc.essi.dtim.NextiaCore.pruebaORMinterface.GraphJenaImpl;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -15,18 +11,6 @@ public class Dataset extends DataResource {
 	private String datasetName;
 	private String datasetDescription;
 	private Date created_at;
-
-	public DataRepository getRepository() {
-		return repository;
-	}
-
-	public void setRepository(DataRepository repository) {
-		this.repository = repository;
-	}
-
-	// Nuevo atributo para la referencia al DataRepository
-	private DataRepository repository;
-
 
 	public LocalGraphJenaImpl getLocalGraph() {
 		return localGraph;
