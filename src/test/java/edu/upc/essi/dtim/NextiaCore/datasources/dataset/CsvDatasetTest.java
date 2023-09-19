@@ -16,7 +16,6 @@ class CsvDatasetTest {
     public void testConstructor() {
         CsvDataset dataset = new CsvDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
 
-        assertEquals(TEST_ID, dataset.getDatasetId());
         assertEquals(TEST_NAME, dataset.getDatasetName());
         assertEquals(TEST_DESC, dataset.getDatasetDescription());
         assertEquals(TEST_FILE, dataset.getPath());
@@ -49,9 +48,12 @@ class CsvDatasetTest {
     }
 
     @Test
-    public void testGetDatasetType() {
-        CsvDataset dataset = new CsvDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
+    public void testCsvDatasetConstructorValidExtension() {
+        assertDoesNotThrow(() -> new CsvDataset("id", "name", "description", "file.csv"));
+    }
 
-        assertEquals("csv", dataset.getDatasetType());
+    @Test
+    public void testCsvDatasetConstructorInvalidExtension() {
+        assertThrows(IllegalArgumentException.class, () -> new CsvDataset("id", "name", "description", "file.txt"));
     }
 }

@@ -18,7 +18,6 @@ class JsonDatasetTest {
     public void testConstructor() {
         JsonDataset dataset = new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
 
-        assertEquals(TEST_ID, dataset.getDatasetId());
         assertEquals(TEST_NAME, dataset.getDatasetName());
         assertEquals(TEST_DESC, dataset.getDatasetDescription());
         assertEquals(TEST_FILE, dataset.getPath());
@@ -51,9 +50,12 @@ class JsonDatasetTest {
     }
 
     @Test
-    public void testGetDatasetType() {
-        Dataset dataset = new JsonDataset(TEST_ID, TEST_NAME, TEST_DESC, TEST_FILE);
+    public void testJsonDatasetConstructorValidExtension() {
+        assertDoesNotThrow(() -> new JsonDataset("id", "name", "description", "file.json"));
+    }
 
-        assertEquals("json", ((JsonDataset) dataset).getDatasetType());
+    @Test
+    public void testJsonDatasetConstructorInvalidExtension() {
+        assertThrows(IllegalArgumentException.class, () -> new JsonDataset("id", "name", "description", "file.txt"));
     }
 }
