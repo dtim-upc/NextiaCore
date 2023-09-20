@@ -12,8 +12,6 @@ public class DataFrame_MM {
     protected static String property (String local )
     { return uri + local; }
 
-
-
     public static final String DataSource = Init.DataSource();
     public static final String DataFrame = Init.DataFrame();
     public static final String Data = Init.Data();
