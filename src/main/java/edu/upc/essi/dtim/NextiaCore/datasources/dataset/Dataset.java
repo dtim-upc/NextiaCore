@@ -1,13 +1,21 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
-import edu.upc.essi.dtim.NextiaCore.datasources.DataResource;
 import edu.upc.essi.dtim.NextiaCore.graph.jena.LocalGraphJenaImpl;
 
 import java.sql.Timestamp;
 import java.util.Date;
 
 
-public class Dataset extends DataResource {
+public class Dataset {
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	private String id;
 	private String datasetName;
 	private String datasetDescription;
 	private Date created_at;
@@ -32,7 +40,7 @@ public class Dataset extends DataResource {
 	 * @param description A description of the dataset.
 	 */
 	public Dataset(String id, String name, String description) {
-		super(id);
+		this.id = id;
 		this.datasetName = name;
 		this.datasetDescription = description;
 		this.created_at = new Date(System.currentTimeMillis());

@@ -1,12 +1,19 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataRepository;
 
-import edu.upc.essi.dtim.NextiaCore.datasources.DataResource;
 import edu.upc.essi.dtim.NextiaCore.datasources.dataset.Dataset;
-
-import java.util.ArrayList;
 import java.util.List;
 
-public class DataRepository extends DataResource {
+public class DataRepository {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
+
     public DataRepository() {
 
         //datasets = new ArrayList<>();
