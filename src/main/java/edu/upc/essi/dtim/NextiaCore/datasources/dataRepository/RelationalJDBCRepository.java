@@ -1,17 +1,17 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataRepository;
 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class RelationalJDBCRepository extends DataRepository{
-
-    public RelationalJDBCRepository() {
-    }
-
     String username;
     String password;
     String port;
+
+    public RelationalJDBCRepository() {
+    }
 
     public RelationalJDBCRepository(String username, String password, String port) {
         this.username = username;
@@ -43,26 +43,12 @@ public class RelationalJDBCRepository extends DataRepository{
         this.port = port;
     }
 
-    public boolean testConnection(){
+    public boolean testConnection() {
         try {
             Connection conexion = DriverManager.getConnection(port, username, password);
-            System.out.println("¡Conexión exitosa!"); // Si llegas aquí, las credenciales son correctas
             conexion.close();
             return true;
-        } catch (SQLException e) {
-            System.err.println("Error al conectar: " + e.getMessage());
-            return false;
-        }
-    }
-
-    boolean testConnection(String url, String user, String password){
-        try {
-            Connection conexion = DriverManager.getConnection(url, user, password);
-            System.out.println("¡Conexión exitosa!"); // Si llegas aquí, las credenciales son correctas
-            conexion.close();
-            return true;
-        } catch (SQLException e) {
-            System.err.println("Error al conectar: " + e.getMessage());
+        } catch (Exception e) {
             return false;
         }
     }
