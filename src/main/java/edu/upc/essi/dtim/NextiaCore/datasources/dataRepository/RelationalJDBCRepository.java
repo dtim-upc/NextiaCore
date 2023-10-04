@@ -1,22 +1,22 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataRepository;
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RelationalJDBCRepository extends DataRepository{
     String username;
     String password;
-    String port;
+    String url;
 
     public RelationalJDBCRepository() {
     }
 
-    public RelationalJDBCRepository(String username, String password, String port) {
+    public RelationalJDBCRepository(String username, String password, String url) {
         this.username = username;
         this.password = password;
-        this.port = port;
+        this.url = url;
     }
 
     public String getUsername() {
@@ -35,21 +35,66 @@ public class RelationalJDBCRepository extends DataRepository{
         this.password = password;
     }
 
-    public String getPort() {
-        return port;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPort(String port) {
-        this.port = port;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public boolean testConnection() {
         try {
-            Connection conexion = DriverManager.getConnection(port, username, password);
+            Connection conexion = DriverManager.getConnection(url, username, password);
             conexion.close();
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public List<String> retrieveTables(){
+        List<String> tableList = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Establecer la conexión a la base de datos
+            connection = DriverManager.getConnection(url, username, password);
+
+            // Crear una declaración SQL
+            statement = connection.createStatement();
+
+            // Ejecutar la consulta para mostrar las tablas
+            resultSet = statement.executeQuery("SELECT table_name\n" +
+                    "FROM information_schema.tables\n" +
+                    "WHERE table_schema = 'public';");
+
+            // Recorrer los resultados y agregar los nombres de las tablas a la lista
+            while (resultSet.next()) {
+                tableList.add(resultSet.getString(1));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Cerrar recursos
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        return tableList;
     }
 }
