@@ -4,6 +4,9 @@ import edu.upc.essi.dtim.NextiaCore.datasources.dataset.Dataset;
 import java.util.List;
 
 public class DataRepository {
+    private String id;
+    private String repositoryName;
+
     public String getId() {
         return id;
     }
@@ -11,17 +14,6 @@ public class DataRepository {
     public void setId(String id) {
         this.id = id;
     }
-
-    private String id;
-
-    public DataRepository() {
-
-        //datasets = new ArrayList<>();
-    }
-
-    private List<Dataset> datasets;
-
-    private String repositoryName;
 
     public String getRepositoryName() {
         return repositoryName;
@@ -31,15 +23,19 @@ public class DataRepository {
         this.repositoryName = repositoryName;
     }
 
+    public String getRepositoryType() {
+        return this.getClass().getSimpleName(); // Retorna el nombre de la clase concreta
+    }
+
+    private List<Dataset> datasets;
+
     public void setDatasets(List<Dataset> datasets) {
         this.datasets = datasets;
     }
 
-
     public List<Dataset> getDatasets() {
         return datasets;
     }
-
 
     public void addDataset(Dataset dataset) {
         datasets.add(dataset);
