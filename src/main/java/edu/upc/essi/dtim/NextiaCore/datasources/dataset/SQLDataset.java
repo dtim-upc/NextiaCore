@@ -6,6 +6,15 @@ public class SQLDataset extends Dataset{
         super(id, name, description);
     }
 
+    public SQLDataset(String id, String name, String description, String tableName, String hostname, String port, String username, String password) {
+        super(id, name, description);
+        this.hostname = hostname;
+        this. tableName = tableName;
+        this.username = username;
+        this.password = password;
+        this.port = port;
+    }
+
     public SQLDataset() {
         super();
     }
