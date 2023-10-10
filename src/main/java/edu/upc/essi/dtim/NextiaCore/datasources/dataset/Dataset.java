@@ -1,5 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import edu.upc.essi.dtim.NextiaCore.datasources.dataRepository.DataRepository;
 import edu.upc.essi.dtim.NextiaCore.graph.jena.LocalGraphJenaImpl;
 
 import java.sql.Timestamp;
@@ -19,6 +21,9 @@ public class Dataset {
 	private String datasetName;
 	private String datasetDescription;
 	private Date created_at;
+
+	@JsonBackReference
+	private DataRepository repository;
 
 	public LocalGraphJenaImpl getLocalGraph() {
 		return localGraph;
@@ -71,5 +76,13 @@ public class Dataset {
 
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
+	}
+
+	public DataRepository getRepository() {
+		return repository;
+	}
+
+	public void setRepository(DataRepository repository) {
+		this.repository = repository;
 	}
 }

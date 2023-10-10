@@ -1,5 +1,6 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataRepository;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import edu.upc.essi.dtim.NextiaCore.datasources.dataset.Dataset;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class DataRepository {
         return this.getClass().getSimpleName(); // Retorna el nombre de la clase concreta
     }
 
+    @JsonManagedReference
     private List<Dataset> datasets;
 
     public void setDatasets(List<Dataset> datasets) {
