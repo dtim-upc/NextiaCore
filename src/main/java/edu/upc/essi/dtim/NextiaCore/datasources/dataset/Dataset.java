@@ -1,6 +1,8 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.upc.essi.dtim.NextiaCore.datasources.dataRepository.DataRepository;
 import edu.upc.essi.dtim.NextiaCore.graph.jena.LocalGraphJenaImpl;
 
@@ -22,7 +24,7 @@ public class Dataset {
 	private String datasetDescription;
 	private Date created_at;
 
-	@JsonBackReference
+	@JsonIgnoreProperties({"datasets"})
 	private DataRepository repository;
 
 	public LocalGraphJenaImpl getLocalGraph() {

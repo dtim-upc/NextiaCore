@@ -28,7 +28,6 @@ public class DataRepository {
         return this.getClass().getSimpleName(); // Retorna el nombre de la clase concreta
     }
 
-    @JsonManagedReference
     private List<Dataset> datasets;
 
     public void setDatasets(List<Dataset> datasets) {
