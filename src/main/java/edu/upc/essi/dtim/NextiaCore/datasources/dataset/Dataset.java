@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import edu.upc.essi.dtim.NextiaCore.datasources.dataRepository.DataRepository;
 import edu.upc.essi.dtim.NextiaCore.graph.jena.LocalGraphJenaImpl;
+import edu.upc.essi.dtim.NextiaCore.discovery.Attribute;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 
 public class Dataset {
@@ -23,6 +25,7 @@ public class Dataset {
 	private String datasetName;
 	private String datasetDescription;
 	private Date created_at;
+	private List<Attribute> attributes;
 
 	@JsonIgnoreProperties({"datasets"})
 	private DataRepository repository;
@@ -87,4 +90,8 @@ public class Dataset {
 	public void setRepository(DataRepository repository) {
 		this.repository = repository;
 	}
+
+	public List<Attribute> getAttributes() {return attributes;}
+
+	public void setAttributes(List<Attribute> attributes) {this.attributes = attributes;}
 }
