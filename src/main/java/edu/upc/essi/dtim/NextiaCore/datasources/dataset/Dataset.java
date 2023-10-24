@@ -27,6 +27,16 @@ public class Dataset {
 	private Date created_at;
 	private List<Attribute> attributes;
 
+	public String getWrapper() {
+		return wrapper;
+	}
+
+	public void setWrapper(String wrapper) {
+		this.wrapper = wrapper;
+	}
+
+	private String wrapper;
+
 	@JsonIgnoreProperties({"datasets"})
 	private DataRepository repository;
 
