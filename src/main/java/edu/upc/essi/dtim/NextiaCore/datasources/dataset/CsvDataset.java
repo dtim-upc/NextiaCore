@@ -46,11 +46,11 @@ public class CsvDataset extends Dataset{
                         attributes.add(new Attribute(columnName, ""));
                     }
                 } else {
-                    System.out.println("No column names found in the CSV file.");
+                    throw new IllegalArgumentException("No column names found in the CSV file.");
                 }
                 super.setAttributes(attributes);
             } catch (IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
             }
             this.path = path;
         }

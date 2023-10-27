@@ -25,6 +25,8 @@ public class Dataset {
 	private String datasetName;
 	private String datasetDescription;
 	private Date created_at;
+
+	@JsonIgnore
 	private List<Attribute> attributes;
 
 	public String getWrapper() {
