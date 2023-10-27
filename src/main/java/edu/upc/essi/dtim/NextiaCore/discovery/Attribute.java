@@ -3,10 +3,22 @@ package edu.upc.essi.dtim.NextiaCore.discovery;
 import lombok.Getter;
 import lombok.Setter;
 import edu.upc.essi.dtim.NextiaCore.datasources.dataset.Dataset;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import java.util.*;
 
 public class Attribute {
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	String id;
+	@JsonIgnore
 	Collection<Alignment> alignment;
 	private String name;
 	private String type;
@@ -14,6 +26,9 @@ public class Attribute {
 	public Attribute(String name, String type) {
 		this.name = name;
 		this.type = type;
+	}
+
+	public Attribute() {
 	}
 
 	public Collection<Alignment> getAlignment() {
