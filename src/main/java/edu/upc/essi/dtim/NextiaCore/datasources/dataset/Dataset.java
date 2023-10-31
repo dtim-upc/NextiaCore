@@ -51,6 +51,16 @@ public class Dataset {
 
 	private LocalGraphJenaImpl localGraph;
 
+	public String getDataLayerPath() {
+		return dataLayerPath;
+	}
+
+	public void setDataLayerPath(String dataLayerPath) {
+		this.dataLayerPath = dataLayerPath;
+	}
+
+	private String dataLayerPath;
+
 
 
 	/**
