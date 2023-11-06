@@ -10,6 +10,14 @@ public class Alignment {
 	public Alignment() {
 	}
 
+	public Alignment(Attribute attributeA, Attribute attributeB, String label, float similarity) {
+		this.attributeA = attributeA;
+		this.attributeB = attributeB;
+		this.label = label;
+		this.similarity = similarity;
+	}
+
+
 	public Attribute getAttributeA() {
 		return attributeA;
 	}
