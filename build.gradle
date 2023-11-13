@@ -4,8 +4,8 @@ plugins {
     id 'signing'
 }
 
-group = 'edu.upc.essi.dtim'
-version = '0.0.1-SNAPSHOT'
+group = 'edu.upc.essi.dtim.NextiaCore'
+version = '0.0.2-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -14,9 +14,29 @@ repositories {
 dependencies {
     implementation group: 'org.apache.jena', name: 'apache-jena-libs', version: '4.1.0', ext: 'pom'
     implementation group: 'org.apache.jena', name: 'jena-querybuilder', version: '4.1.0'
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.26'
+    annotationProcessor 'org.projectlombok:lombok:1.18.26'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.26'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // https://mvnrepository.com/artifact/org.postgresql/postgresql
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
+
+    // https://mvnrepository.com/artifact/com.opencsv/opencsv
+    implementation group: 'com.opencsv', name: 'opencsv', version: '3.7'
+
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.0'
+
+
 }
 
 test {
@@ -86,10 +106,10 @@ publishing {
     }
     repositories {
         maven {
-            credentials {
-                username nexusUsername
-                password nexusPassword
-            }
+//            credentials {
+//                username nexusUsername
+//                password nexusPassword
+//            }
 
             def releasesRepoUrl = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
             def snapshotsRepoUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
@@ -102,5 +122,18 @@ publishing {
 javadoc {
     if(JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption('html5', true)
+    }
+}
+
+task uberJar(type: Jar) {
+    duplicatesStrategy = 'exclude'
+    archiveClassifier = 'uber'
+    zip64(true)
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
 }

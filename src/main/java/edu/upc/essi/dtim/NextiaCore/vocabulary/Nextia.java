@@ -1,4 +1,4 @@
-package edu.upc.essi.dtim.vocabulary;
+package edu.upc.essi.dtim.NextiaCore.vocabulary;
 
 public enum Nextia {
 //    The namespace of the edu.upc.essi.dtim.vocabulary.
