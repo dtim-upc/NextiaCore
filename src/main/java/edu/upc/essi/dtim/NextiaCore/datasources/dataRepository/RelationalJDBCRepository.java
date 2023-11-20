@@ -4,6 +4,8 @@ package edu.upc.essi.dtim.NextiaCore.datasources.dataRepository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RelationalJDBCRepository extends DataRepository{
     String username;
@@ -96,5 +98,29 @@ public class RelationalJDBCRepository extends DataRepository{
         }
 
         return tableList;
+    }
+
+    public String retrieveHostname() {
+        Pattern pattern = Pattern.compile("jdbc:postgresql://([a-zA-Z0-9.-]+):(\\d+)/");
+        Matcher matcher = pattern.matcher(this.url);
+
+        if (matcher.find()) {
+            return matcher.group(1);
+        } else {
+            // Manejar el caso en el que la cadena no coincida con el formato esperado
+            return null;
+        }
+    }
+
+    public String retrievePort() {
+        Pattern pattern = Pattern.compile("jdbc:postgresql://([a-zA-Z0-9.-]+):(\\d+)/");
+        Matcher matcher = pattern.matcher(this.url);
+
+        if (matcher.find()) {
+            return matcher.group(2);
+        } else {
+            // Manejar el caso en el que la cadena no coincida con el formato esperado
+            return null;
+        }
     }
 }
