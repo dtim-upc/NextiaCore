@@ -153,6 +153,12 @@ task copyJarToOtherProjects() {
 
     // Create a copy task for each project directory
     targetProjects.each { path ->
+        // Ensure the directory exists
+        new File(path).mkdirs()
+
+        // Remove previous versions
+        new File(path, 'NextiaCore.jar').delete()
+
         copy {
             println "JAR copying to project: $path"
             from nextiaCoreJarPath
