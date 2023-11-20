@@ -140,6 +140,8 @@ task uberJar(type: Jar) {
 
 //Task to export NextiaCore
 task copyJarToOtherProjects() {
+    uberJar
+
     def ODIN = '..\\ODIN\\api\\lib'
     def nextiaDIPath = "..\\NextiaDI\\lib"
     def nextiaBSPath = "..\\NextiaBS\\lib"
@@ -158,6 +160,7 @@ task copyJarToOtherProjects() {
 
         // Remove previous versions
         new File(path, 'NextiaCore.jar').delete()
+        new File(path, 'nextiacore-0.0.2-SNAPSHOT-uber.jar').delete()
 
         copy {
             println "JAR copying to project: $path"
