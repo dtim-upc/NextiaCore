@@ -137,3 +137,34 @@ task uberJar(type: Jar) {
         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
 }
+
+//Task to export NextiaCore
+task copyJarToOtherProjects() {
+    def ODIN = '..\\ODIN\\api\\lib'
+    def nextiaDIPath = "..\\NextiaDI\\lib"
+    def nextiaBSPath = "..\\NextiaBS\\lib"
+    def nextiaDLPath = "..\\NextiaDataLayer\\lib"
+    def nextiaJDPath = "..\\NextiaJD2\\lib"
+
+    def nextiaCoreJarPath = "build/libs/nextiacore-0.0.2-SNAPSHOT-uber.jar"
+
+    // Define the target projects
+    def targetProjects = [ODIN, nextiaDIPath, nextiaBSPath, nextiaDLPath, nextiaJDPath]
+
+    // Create a copy task for each project directory
+    targetProjects.each { path ->
+        copy {
+            println "JAR copying to project: $path"
+            from nextiaCoreJarPath
+            rename { 'NextiaCore.jar' }
+            into path
+            doLast {
+                println "JAR copied to project: $path"
+            }
+        }
+    }
+}
+
+
+// La tarea de copia a los otros proyectos se ejecuta después de la tarea de generación de JAR
+copyJarToOtherProjects.dependsOn uberJar
