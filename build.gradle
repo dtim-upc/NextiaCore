@@ -171,6 +171,5 @@ task copyJarToOtherProjects() {
     }
 }
 
-
 // La tarea de copia a los otros proyectos se ejecuta después de la tarea de generación de JAR
 copyJarToOtherProjects.dependsOn uberJar
