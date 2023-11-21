@@ -126,6 +126,7 @@ javadoc {
 }
 
 task uberJar(type: Jar) {
+    println "GENERATING NEXTIACORE JAR"
     duplicatesStrategy = 'exclude'
     archiveClassifier = 'uber'
     zip64(true)
