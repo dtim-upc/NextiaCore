@@ -13,7 +13,11 @@ repositories {
 
 dependencies {
     implementation group: 'org.apache.jena', name: 'apache-jena-libs', version: '4.1.0', ext: 'pom'
+
+    // https://mvnrepository.com/artifact/org.apache.jena/jena-querybuilder
+    // https://mvnrepository.com/artifact/org.apache.jena/jena-querybuilder/4.1.0
     implementation group: 'org.apache.jena', name: 'jena-querybuilder', version: '4.1.0'
+
     implementation 'junit:junit:4.13.1'
     implementation 'junit:junit:4.13.1'
     implementation 'junit:junit:4.13.1'

@@ -1,8 +1,7 @@
 package edu.upc.essi.dtim.NextiaCore.graph.jena;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.upc.essi.dtim.NextiaCore.graph.IntegratedGraph;
-import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.*;
 
 public class IntegratedGraphJenaImpl extends GraphJenaImpl implements IntegratedGraph {
 

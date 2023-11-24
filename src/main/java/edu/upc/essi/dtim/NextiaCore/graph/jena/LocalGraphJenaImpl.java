@@ -18,16 +18,16 @@ public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph, Gra
     }
 
     /**
-     * @return
+     * @return String
      */
     public String getGraphName() {
         return super.getGraphName();
     }
 
     /**
-     * @param subject
-     * @param predicate
-     * @param object
+     * @param subject subject
+     * @param predicate predicate
+     * @param object object
      */
     @Override
     public void addTriple(String subject, String predicate, String object) {
@@ -35,9 +35,9 @@ public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph, Gra
     }
 
     /**
-     * @param subject
-     * @param predicate
-     * @param object
+     * @param subject subject
+     * @param predicate predicate
+     * @param object object
      */
     @Override
     public void addTripleLiteral(String subject, String predicate, String object) {
@@ -45,9 +45,9 @@ public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph, Gra
     }
 
     /**
-     * @param subject
-     * @param predicate
-     * @param object
+     * @param subject subject
+     * @param predicate predicate
+     * @param object object
      */
     @Override
     public void deleteTriple(String subject, String predicate, String object) {
@@ -55,8 +55,8 @@ public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph, Gra
     }
 
     /**
-     * @param sparql
-     * @return
+     * @param sparql sparql
+     * @return List
      */
     @Override
     public List<Map<String, Object>> query(String sparql) {
@@ -64,7 +64,7 @@ public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph, Gra
     }
 
     /**
-     * @return
+     * @return String
      */
     @Override
     public String getGraphicalSchema() {
@@ -72,7 +72,7 @@ public class LocalGraphJenaImpl extends GraphJenaImpl implements LocalGraph, Gra
     }
 
     /**
-     * @param graphicalSchema
+     * @param graphicalSchema graphicalSchema
      */
     @Override
     public void setGraphicalSchema(String graphicalSchema) {

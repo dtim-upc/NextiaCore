@@ -40,9 +40,9 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @param subject
-	 * @param predicate
-	 * @param object
+	 * @param subject Subject
+	 * @param predicate Predicate
+	 * @param object Object
 	 */
 	@Override
 	public void addTriple(String subject, String predicate, String object) {
@@ -52,9 +52,9 @@ public class GraphJenaImpl implements Graph {
 
 
 	/**
-	 * @param subject
-	 * @param predicate
-	 * @param literal
+	 * @param subject Subject
+	 * @param predicate Predicate
+	 * @param literal literal
 	 */
 	@Override
 	public void addTripleLiteral(String subject, String predicate, String literal) {
@@ -63,9 +63,9 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @param subject
-	 * @param predicate
-	 * @param object
+	 * @param subject Subject
+	 * @param predicate Predicate
+	 * @param object Object
 	 */
 	@Override
 	public void deleteTriple(String subject, String predicate, String object) {
@@ -73,8 +73,8 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @param sparql
-	 * @return
+	 * @param sparql query
+	 * @return List
 	 */
 	@Override
 	public List<Map<String, Object>> query(String sparql) {
@@ -134,7 +134,7 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @return
+	 * @return iter
 	 */
 	@Override
 	public ResIterator retrieveSubjects() {
@@ -153,7 +153,7 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @return
+	 * @return list string
 	 */
 	@Override
 	public List<String> retrievePredicates() {
@@ -170,7 +170,7 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @param file
+	 * @param file file
 	 */
 	@Override
 	public void write(String file) {
@@ -182,8 +182,8 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @param propertyIRI
-	 * @return
+	 * @param propertyIRI propertyIRI
+	 * @return string
 	 */
 	@Override
 	public String getDomainOfProperty(String propertyIRI) {
@@ -202,8 +202,8 @@ public class GraphJenaImpl implements Graph {
 	}
 
 	/**
-	 * @param resourceIRI
-	 * @return
+	 * @param resourceIRI resourceIRI
+	 * @return string
 	 */
 	@Override
 	public String getRDFSLabel(String resourceIRI) {
