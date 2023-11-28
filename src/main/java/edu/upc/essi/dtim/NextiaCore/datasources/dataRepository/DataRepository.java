@@ -8,6 +8,16 @@ public class DataRepository {
     private String id;
     private String repositoryName;
 
+    public Boolean getVirtual() {
+        return this.isVirtual;
+    }
+
+    public void setVirtual(final Boolean virtual) {
+        this.isVirtual = virtual;
+    }
+
+    private Boolean isVirtual;
+
     public String getId() {
         return id;
     }
