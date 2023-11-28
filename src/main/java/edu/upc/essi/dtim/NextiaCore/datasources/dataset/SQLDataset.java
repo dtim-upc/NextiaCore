@@ -1,6 +1,11 @@
 package edu.upc.essi.dtim.NextiaCore.datasources.dataset;
 
 public class SQLDataset extends Dataset{
+    String tableName;
+    String hostname;
+    String port;
+    String username;
+    String password;
 
     public SQLDataset(String id, String name, String description) {
         super(id, name, description);
@@ -59,14 +64,4 @@ public class SQLDataset extends Dataset{
     public void setPassword(String password) {
         this.password = password;
     }
-
-    String tableName;
-
-    String hostname;
-
-    String port;
-
-    String username;
-
-    String password;
 }
